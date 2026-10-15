@@ -5,214 +5,293 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Minhas Contas</title>
 <meta name="description" content="Gastos, receitas, orçamentos e lembretes. Funciona sem internet e guarda tudo no seu celular.">
-<meta name="theme-color" content="#0d6b61" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f1514" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2f5f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0f0e" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Contas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: coluna única de celular (máx. 560px), barra de abas fixa embaixo, botão + flutuante,
-   formulários em folha que sobe de baixo. Fonte do sistema (funciona sem internet). */
+/* Layout: coluna única de celular (máx. 560px). Topo com saudação, cartão de saldo em degradê
+   verde-petróleo, cartões arredondados com sombra suave, barra de abas flutuante com o + no centro.
+   Formulários em folha que sobe de baixo. */
 :root {
   color-scheme: light;
-  --bg: #eef2f1;
+  --bg: #f2f5f4;
   --surface: #ffffff;
-  --surface-2: #f5f8f7;
-  --ink: #14201e;
-  --muted: #5b6965;
-  --line: #dbe3e0;
-  --accent: #0d6b61;
+  --surface-2: #f0f4f3;
+  --ink: #0f1917;
+  --muted: #5e6b67;
+  --faint: #8b9894;
+  --line: #e2e8e6;
+  --accent: #0b6e62;
   --accent-ink: #ffffff;
-  --accent-soft: #d6ebe7;
-  --income: #1a7f37;
-  --good: #1a7f37;  --good-bg: #dff3e4;
-  --warn: #9a5b00;  --warn-bg: #fdf0d8; --warn-bar: #e6a01e;
-  --crit: #c2362f;  --crit-bg: #fbe3e1;
-  --shadow: 0 1px 2px rgba(20, 32, 30, .06), 0 8px 24px -12px rgba(20, 32, 30, .18);
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --radius: 14px;
-  --nav-h: 64px;
+  --accent-soft: #dbeee9;
+  --accent-wash: rgba(11, 110, 98, .12);
+  --ghost: #b3bdba;
+  --hero-a: #0b3f39;
+  --hero-b: #0b7366;
+  --income: #15803d;
+  --good: #15803d;  --good-bg: #dcf3e3;
+  --warn: #935400;  --warn-bg: #fdefd5; --warn-bar: #e6a01e;
+  --crit: #c2362f;  --crit-bg: #fbe2e0;
+  --shadow: 0 1px 2px rgba(15, 25, 23, .05), 0 10px 30px -14px rgba(15, 25, 23, .22);
+  --shadow-lg: 0 18px 40px -18px rgba(11, 63, 57, .55);
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radius: 20px;
+  --nav-h: 66px;
+  --card-border: transparent;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   color-scheme: dark;
-  --bg: #0f1514; --surface: #18201e; --surface-2: #1f2826; --ink: #e9efed; --muted: #9fb0ab; --line: #2b3633;
-  --accent: #4fb8a9; --accent-ink: #06201c; --accent-soft: #1d3a35; --income: #5cc977;
-  --good: #5cc977; --good-bg: #183222; --warn: #f0b04a; --warn-bg: #3a2c12; --warn-bar: #e6a01e;
-  --crit: #ff7b72; --crit-bg: #3d1b19; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+  --bg: #0a0f0e; --surface: #131a18; --surface-2: #1a2320; --ink: #eef3f1; --muted: #9ba9a5; --faint: #6f7d79; --line: #24302c;
+  --accent: #45c3b1; --accent-ink: #04201b; --accent-soft: #15322d; --accent-wash: rgba(69, 195, 177, .14); --ghost: #4c5a56;
+  --hero-a: #0c2d29; --hero-b: #106357; --income: #5fd17f;
+  --good: #5fd17f; --good-bg: #16301f; --warn: #f2b34d; --warn-bg: #362812; --warn-bar: #e6a01e;
+  --crit: #ff7b72; --crit-bg: #3a1a18; --card-border: #1f2926;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7); --shadow-lg: 0 18px 40px -18px rgba(0,0,0,.8);
 } }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0f1514; --surface: #18201e; --surface-2: #1f2826; --ink: #e9efed; --muted: #9fb0ab; --line: #2b3633;
-  --accent: #4fb8a9; --accent-ink: #06201c; --accent-soft: #1d3a35; --income: #5cc977;
-  --good: #5cc977; --good-bg: #183222; --warn: #f0b04a; --warn-bg: #3a2c12; --warn-bar: #e6a01e;
-  --crit: #ff7b72; --crit-bg: #3d1b19; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+  --bg: #0a0f0e; --surface: #131a18; --surface-2: #1a2320; --ink: #eef3f1; --muted: #9ba9a5; --faint: #6f7d79; --line: #24302c;
+  --accent: #45c3b1; --accent-ink: #04201b; --accent-soft: #15322d; --accent-wash: rgba(69, 195, 177, .14); --ghost: #4c5a56;
+  --hero-a: #0c2d29; --hero-b: #106357; --income: #5fd17f;
+  --good: #5fd17f; --good-bg: #16301f; --warn: #f2b34d; --warn-bg: #362812; --warn-bar: #e6a01e;
+  --crit: #ff7b72; --crit-bg: #3a1a18; --card-border: #1f2926;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7); --shadow-lg: 0 18px 40px -18px rgba(0,0,0,.8);
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html { height: 100%; }
-body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font: 16px/1.45 var(--font); }
+body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font: 15.5px/1.45 var(--font); -webkit-font-smoothing: antialiased; }
 button, input, select, textarea { font: inherit; color: inherit; }
-.num, .money { font-variant-numeric: tabular-nums; }
+.num { font-variant-numeric: tabular-nums; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 [hidden] { display: none !important; }
+p { margin: 0; }
 
 .app { max-width: 560px; margin: 0 auto; padding-inline: 16px;
-  padding-block: calc(env(safe-area-inset-top, 0px) + 12px) calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 88px);
+  padding-block: calc(env(safe-area-inset-top, 0px) + 14px) calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 40px);
   display: grid; gap: 14px; }
 
-h1, h2, h3 { margin: 0; line-height: 1.2; text-wrap: balance; }
-h1 { font-size: 22px; font-weight: 700; }
-h2 { font-size: 15px; font-weight: 650; }
-.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { margin: 0; line-height: 1.2; text-wrap: balance; letter-spacing: -.01em; }
+h1 { font-size: 24px; font-weight: 800; }
+h2 { font-size: 16px; font-weight: 700; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
 .muted { color: var(--muted); }
-p { margin: 0; }
 .small { font-size: 13px; }
 
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; display: grid; gap: 10px; min-width: 0; }
-.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.card-head a, .link { color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none; background: none; border: 0; padding: 0; cursor: pointer; }
+.card { background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 16px; display: grid; gap: 12px; min-width: 0; box-shadow: var(--shadow); }
+.card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.card-head .sub { font-size: 13px; color: var(--muted); }
+.link { color: var(--accent); font-size: 14px; font-weight: 700; text-decoration: none; background: none; border: 0; padding: 4px 0; cursor: pointer; }
 
-/* topo com saldo */
-.hero { background: var(--accent); color: var(--accent-ink); border-radius: 18px; padding: 16px 16px 14px; display: grid; gap: 4px; box-shadow: var(--shadow); }
-.hero .eyebrow { color: inherit; opacity: .85; }
-.hero .big { font-size: 34px; font-weight: 750; letter-spacing: -.01em; }
-.hero-row { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; opacity: .92; }
+/* topo */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 2px; }
+.top h1 { text-transform: capitalize; }
+.top .hello { font-size: 14px; color: var(--muted); font-weight: 600; }
+
+/* cartão de saldo */
+.hero { position: relative; overflow: hidden; color: #fff; border-radius: 24px; padding: 18px 18px 16px; display: grid; gap: 10px;
+  background: radial-gradient(120% 140% at 100% 0%, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 45%), linear-gradient(140deg, var(--hero-a), var(--hero-b));
+  box-shadow: var(--shadow-lg); }
+.hero::after { content: ""; position: absolute; right: -40px; bottom: -60px; width: 180px; height: 180px; border-radius: 50%; border: 26px solid rgba(255,255,255,.06); pointer-events: none; }
+.hero .eyebrow { color: rgba(255,255,255,.78); }
+.hero-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.hero .big { font-size: clamp(34px, 10vw, 44px); font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
+.hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hero-split > div { background: rgba(255,255,255,.1); border-radius: 14px; padding: 9px 12px; display: grid; gap: 1px; min-width: 0; }
+.hero-split .k { font-size: 12px; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: 5px; }
+.hero-split .v { font-weight: 700; font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hero-meter { display: grid; gap: 6px; font-size: 12.5px; color: rgba(255,255,255,.8); }
+.hero-meter .track { background: rgba(255,255,255,.18); border: 0; height: 8px; }
+.hero-meter .fill { background: #fff; }
+.delta { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.14); color: #fff; white-space: nowrap; }
 
 /* entrada rápida */
+.quick { padding: 10px; gap: 8px; }
 .quick form { display: flex; gap: 8px; align-items: center; min-width: 0; }
-.quick input { flex: 1 1 0; width: 0; min-width: 0; border: 1px solid var(--line); background: var(--surface-2); border-radius: 12px; padding: 12px 12px; font-size: 16px; }
-.quick input:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
-.icon-btn { flex: none; width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-2); display: grid; place-items: center; cursor: pointer; }
-.icon-btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.icon-btn.listening { background: var(--crit); color: #fff; border-color: var(--crit); }
+.quick input { flex: 1 1 0; width: 0; min-width: 0; border: 0; background: var(--surface-2); border-radius: 14px; padding: 13px 14px; font-size: 16px; }
+.quick input:focus { outline: 2px solid var(--accent); outline-offset: 0; }
+.quick .small { padding: 0 6px 4px; }
+.icon-btn { flex: none; width: 46px; height: 46px; border-radius: 14px; border: 0; background: var(--surface-2); display: grid; place-items: center; cursor: pointer; color: var(--ink); }
+.icon-btn.primary { background: var(--accent); color: var(--accent-ink); }
+.icon-btn.ghost { background: var(--surface); box-shadow: var(--shadow); }
+.icon-btn.listening { background: var(--crit); color: #fff; }
 .icon-btn svg { width: 22px; height: 22px; }
-.preview { display: grid; gap: 8px; }
+.preview { display: grid; gap: 8px; padding: 0 4px 4px; }
 .preview:empty { display: none; }
 .preview-item { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 14px; }
-.pill { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 3px 10px; background: var(--surface-2); border: 1px solid var(--line); font-size: 13px; white-space: nowrap; }
-.pill.strong { background: var(--accent-soft); border-color: transparent; font-weight: 600; }
+.pill { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 4px 10px; background: var(--surface-2); font-size: 13px; white-space: nowrap; }
+.pill.strong { background: var(--accent-soft); font-weight: 700; }
 .pill.inc { color: var(--income); }
 .preview-actions { display: flex; gap: 8px; }
 
-.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 10px 14px; font-weight: 600; cursor: pointer; min-height: 44px; }
-.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.btn.danger { color: var(--crit); }
+.btn { border: 0; background: var(--surface-2); border-radius: 14px; padding: 11px 16px; font-weight: 700; cursor: pointer; min-height: 44px; color: var(--ink); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.danger { color: var(--crit); background: var(--crit-bg); }
 .btn.block { width: 100%; }
 .btn:disabled { opacity: .5; }
-button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* números do mês */
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.stat { background: var(--surface); border: 1px solid var(--card-border); border-radius: 18px; padding: 13px 14px; display: grid; gap: 2px; min-width: 0; box-shadow: var(--shadow); }
+.stat .ic { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 6px; }
+.stat .ic svg { width: 17px; height: 17px; }
+.stat .label { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.stat .value { font-size: 19px; font-weight: 800; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stat .hint { font-size: 12px; color: var(--faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* gráficos */
+.chart { position: relative; width: 100%; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.chart .axis { fill: var(--faint); font-size: 11px; font-variant-numeric: tabular-nums; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .lbl { fill: var(--ink); font-size: 12px; font-weight: 700; }
+.chart .hair { stroke: var(--muted); stroke-width: 1; opacity: 0; }
+.chart.active .hair { opacity: .6; }
+.tip { position: absolute; top: 0; pointer-events: none; background: var(--ink); color: var(--bg); border-radius: 12px; padding: 8px 10px; font-size: 12.5px; box-shadow: var(--shadow); opacity: 0; transition: opacity .12s; min-width: 120px; z-index: 2; }
+.chart.active .tip { opacity: 1; }
+.tip .t-head { font-weight: 600; opacity: .75; margin-bottom: 3px; }
+.tip .t-row { display: flex; align-items: center; gap: 6px; }
+.tip .t-row b { font-weight: 800; }
+.tip .key { width: 12px; height: 2px; border-radius: 1px; flex: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend .key { width: 14px; height: 2px; border-radius: 1px; }
+.seg-mini { display: inline-flex; background: var(--surface-2); border-radius: 10px; padding: 3px; gap: 2px; }
+.seg-mini button { border: 0; background: none; padding: 4px 10px; border-radius: 8px; font-size: 12.5px; font-weight: 700; color: var(--muted); cursor: pointer; }
+.seg-mini button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 
 /* listas */
 .list { display: grid; }
-.row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; background: none; border-left: 0; border-right: 0; border-bottom: 0; text-align: left; width: 100%; cursor: pointer; }
-.list > .row:first-child { border-top: 0; }
-.row .ico { flex: none; width: 38px; height: 38px; border-radius: 11px; background: var(--surface-2); display: grid; place-items: center; font-size: 19px; }
+.row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border: 0; border-top: 1px solid var(--line); min-width: 0; background: none; text-align: left; width: 100%; cursor: pointer; color: var(--ink); }
+.list > .row:first-child { border-top: 0; padding-top: 2px; }
+.row .ico { flex: none; width: 42px; height: 42px; border-radius: 14px; background: var(--surface-2); display: grid; place-items: center; font-size: 20px; }
 .row .main { flex: 1; min-width: 0; }
-.row .title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 550; }
-.row .sub { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.row .amt { font-weight: 650; white-space: nowrap; }
+.row .title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 650; display: block; }
+.row .sub { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+.row .amt { font-weight: 750; white-space: nowrap; }
 .amt.inc { color: var(--income); }
-.day-head { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); padding: 12px 0 2px; font-weight: 600; }
+.day-head { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--muted); padding: 14px 0 2px; font-weight: 700; text-transform: capitalize; }
 
-/* barras por categoria */
-.bars { display: grid; gap: 10px; }
-.bar-row { display: grid; gap: 5px; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; width: 100%; }
-.bar-line { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
-.bar-line .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.bar-line .val { color: var(--muted); white-space: nowrap; }
-.track { height: 10px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
-.fill { height: 100%; background: var(--accent); border-radius: 0 4px 4px 0; min-width: 3px; }
+/* categorias */
+.bars { display: grid; gap: 4px; }
+.bar-row { display: grid; grid-template-columns: 42px minmax(0, 1fr); column-gap: 12px; row-gap: 6px; align-items: center; background: none; border: 0; padding: 7px 0; text-align: left; cursor: pointer; width: 100%; color: var(--ink); }
+.bar-row .ico { width: 42px; height: 42px; border-radius: 14px; background: var(--surface-2); display: grid; place-items: center; font-size: 20px; grid-row: span 2; }
+.bar-line { display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px; align-items: baseline; }
+.bar-line .name { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 650; }
+.bar-line .name::first-letter { text-transform: uppercase; }
+.bar-line .val { white-space: nowrap; font-weight: 700; }
+.bar-line .pct { color: var(--muted); font-weight: 600; font-size: 12.5px; margin-left: 6px; }
+.track { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.fill { display: block; height: 100%; background: var(--accent); border-radius: 0 4px 4px 0; min-width: 3px; }
 .fill.good { background: var(--good); } .fill.warn { background: var(--warn-bar); } .fill.crit { background: var(--crit); }
-.status { font-size: 12px; font-weight: 650; border-radius: 999px; padding: 1px 8px; }
+.bar-plain { display: grid; gap: 6px; padding: 6px 0; }
+.status { font-size: 11.5px; font-weight: 750; border-radius: 999px; padding: 2px 8px; }
 .status.good { color: var(--good); background: var(--good-bg); }
 .status.warn { color: var(--warn); background: var(--warn-bg); }
 .status.crit { color: var(--crit); background: var(--crit-bg); }
 
-/* blocos de números */
+/* extrato */
 .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px; min-width: 0; }
-.tile .label { font-size: 12px; color: var(--muted); }
-.tile .value { font-size: 16px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tile { background: var(--surface); border: 1px solid var(--card-border); border-radius: 16px; padding: 11px 10px; min-width: 0; box-shadow: var(--shadow); }
+.tile .label { font-size: 12px; color: var(--muted); font-weight: 600; }
+.tile .value { font-size: clamp(12.5px, 3.45vw, 15.5px); letter-spacing: -.01em; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 @media (max-width: 360px) { .tiles { grid-template-columns: minmax(0, 1fr); } }
-
 .month-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.month-nav h1 { text-transform: capitalize; }
+.month-nav h1 { text-transform: capitalize; font-size: 21px; }
 .chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
 .chips::-webkit-scrollbar { display: none; }
-.chip { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 14px; cursor: pointer; white-space: nowrap; }
-.chip[aria-pressed="true"], .chip.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chip { flex: none; border: 0; background: var(--surface-2); border-radius: 999px; padding: 7px 13px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; color: var(--ink); }
+.chip[aria-pressed="true"], .chip.on { background: var(--accent); color: var(--accent-ink); }
+.search { border: 0; background: var(--surface-2); border-radius: 14px; padding: 12px 14px; font-size: 16px; width: 100%; }
 
 /* lembretes */
 .rem-actions { display: flex; gap: 6px; flex: none; }
-.rem-actions .btn { min-height: 36px; padding: 6px 10px; font-size: 14px; }
-.due { color: var(--crit); font-weight: 650; }
-.alert { border-radius: 12px; padding: 10px 12px; font-size: 14px; display: flex; gap: 8px; align-items: flex-start; }
+.rem-actions .btn { min-height: 36px; padding: 6px 12px; font-size: 14px; }
+.due { color: var(--crit); font-weight: 700; }
+.alert { border-radius: 16px; padding: 12px 14px; font-size: 14px; display: flex; gap: 10px; align-items: flex-start; }
 .alert.warn { background: var(--warn-bg); color: var(--warn); }
 .alert.crit { background: var(--crit-bg); color: var(--crit); }
 .alert.info { background: var(--accent-soft); color: var(--ink); }
 
-/* barra de abas e botão + */
-.nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--surface); border-top: 1px solid var(--line);
-  padding-bottom: env(safe-area-inset-bottom, 0px); }
-.nav-inner { max-width: 560px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); height: var(--nav-h); }
-.nav button { background: none; border: 0; display: grid; place-items: center; align-content: center; gap: 2px; font-size: 11.5px; color: var(--muted); cursor: pointer; position: relative; }
-.nav button svg { width: 24px; height: 24px; }
-.nav button[aria-current="page"] { color: var(--accent); font-weight: 650; }
-.badge { position: absolute; top: 8px; left: calc(50% + 6px); min-width: 18px; height: 18px; border-radius: 9px; background: var(--crit); color: #fff; font-size: 11px; font-weight: 700; display: grid; place-items: center; padding: 0 5px; }
-.fab { position: fixed; z-index: 11; right: max(16px, calc(50% - 280px + 16px)); bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 16px);
-  width: 58px; height: 58px; border-radius: 18px; border: 0; background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow); display: grid; place-items: center; cursor: pointer; }
-.fab svg { width: 28px; height: 28px; }
+/* barra de abas flutuante */
+.nav { position: fixed; z-index: 10; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); max-width: 536px; margin: 0 auto;
+  background: color-mix(in srgb, var(--surface) 88%, transparent); -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow-lg); }
+.nav-inner { display: grid; grid-template-columns: 1fr 1fr 72px 1fr 1fr; height: var(--nav-h); align-items: center; }
+.nav button { background: none; border: 0; display: grid; place-items: center; align-content: center; gap: 3px; font-size: 11px; font-weight: 650; color: var(--faint); cursor: pointer; position: relative; height: 100%; }
+.nav button svg { width: 23px; height: 23px; }
+.nav button[aria-current="page"] { color: var(--accent); }
+.nav button[aria-current="page"]::before { content: ""; position: absolute; top: 6px; width: 34px; height: 3px; border-radius: 2px; background: var(--accent); }
+.nav .fab { width: 54px; height: 54px; border-radius: 18px; border: 0; background: linear-gradient(140deg, var(--hero-b), var(--hero-a)); color: #fff; box-shadow: 0 8px 18px -6px rgba(11, 110, 98, .6); display: grid; place-items: center; cursor: pointer; margin: 0 auto; transform: translateY(-14px); }
+.nav .fab svg { width: 26px; height: 26px; }
+.badge { position: absolute; top: 9px; left: calc(50% + 5px); min-width: 18px; height: 18px; border-radius: 9px; background: var(--crit); color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; padding: 0 5px; }
 
 /* folha (formulários) */
-dialog.sheet { border: 0; padding: 0; margin: auto auto 0; width: 100%; max-width: 560px; max-height: 92vh; border-radius: 20px 20px 0 0; background: var(--surface); color: var(--ink); }
-dialog.sheet::backdrop { background: rgba(5, 12, 11, .45); }
-.sheet-body { padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 14px; overflow-y: auto; max-height: 92vh; }
+dialog.sheet { border: 0; padding: 0; margin: auto auto 0; width: 100%; max-width: 560px; max-height: 92vh; border-radius: 26px 26px 0 0; background: var(--surface); color: var(--ink); }
+dialog.sheet::backdrop { background: rgba(5, 12, 11, .5); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.sheet-body { padding: 10px 16px calc(18px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 14px; overflow-y: auto; max-height: 92vh; }
+.sheet-body::before { content: ""; width: 40px; height: 5px; border-radius: 3px; background: var(--line); justify-self: center; }
 .sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .field { display: grid; gap: 6px; }
-.field > span { font-size: 13px; font-weight: 600; color: var(--muted); }
-.field input, .field select, .field textarea { border: 1px solid var(--line); background: var(--surface-2); border-radius: 12px; padding: 11px 12px; font-size: 16px; width: 100%; min-width: 0; }
-.field input.big { font-size: 28px; font-weight: 700; padding: 10px 12px; }
-.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 3px; gap: 3px; }
-.seg button { border: 0; background: none; border-radius: 9px; padding: 9px 6px; font-weight: 600; cursor: pointer; color: var(--muted); }
-.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.field > span { font-size: 13px; font-weight: 700; color: var(--muted); }
+.field input, .field select, .field textarea { border: 0; background: var(--surface-2); border-radius: 14px; padding: 12px 14px; font-size: 16px; width: 100%; min-width: 0; }
+.field input.big { font-size: 32px; font-weight: 800; padding: 10px 14px; }
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; background: var(--surface-2); border-radius: 14px; padding: 4px; gap: 4px; }
+.seg button { border: 0; background: none; border-radius: 11px; padding: 9px 6px; font-weight: 700; cursor: pointer; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.14); }
 .cat-grid { display: flex; flex-wrap: wrap; gap: 6px; }
 .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .actions .btn.primary { flex: 1; }
 
-/* aviso no rodapé */
-.toast-wrap { position: fixed; left: 0; right: 0; z-index: 30; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 86px); display: grid; justify-items: center; padding-inline: 16px; pointer-events: none; }
-.toast { pointer-events: auto; max-width: 528px; width: 100%; background: var(--ink); color: var(--bg); border-radius: 12px; padding: 11px 14px; display: flex; gap: 12px; align-items: center; justify-content: space-between; box-shadow: var(--shadow); font-size: 14px; }
-.toast button { background: none; border: 0; color: inherit; font-weight: 700; text-decoration: underline; cursor: pointer; padding: 4px; white-space: nowrap; }
+/* avisos */
+.toast-wrap { position: fixed; left: 0; right: 0; z-index: 30; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 30px); display: grid; justify-items: center; padding-inline: 16px; pointer-events: none; }
+.toast { pointer-events: auto; max-width: 528px; width: 100%; background: var(--ink); color: var(--bg); border-radius: 16px; padding: 12px 14px; display: flex; gap: 12px; align-items: center; justify-content: space-between; box-shadow: var(--shadow-lg); font-size: 14px; }
+.toast button { background: none; border: 0; color: inherit; font-weight: 800; text-decoration: underline; cursor: pointer; padding: 4px; white-space: nowrap; }
 .banner { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 12; }
 
-.empty { color: var(--muted); font-size: 14px; padding: 6px 0; }
+.empty { color: var(--muted); font-size: 14px; padding: 4px 0; }
 .setting { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
 .setting:first-of-type { border-top: 0; }
-.setting .money-in { width: 120px; text-align: right; border: 1px solid var(--line); background: var(--surface-2); border-radius: 10px; padding: 8px 10px; font-size: 16px; }
+.setting .money-in { width: 120px; text-align: right; border: 0; background: var(--surface-2); border-radius: 12px; padding: 9px 12px; font-size: 16px; }
+
+/* modo privado: esconde os valores */
+.privado .money { filter: blur(7px); }
+.privado .chart .axis.money, .privado .chart .lbl.money { visibility: hidden; }
+
 @media (prefers-reduced-motion: no-preference) {
-  dialog.sheet[open] { animation: up .2s ease-out; }
+  .view-enter > * { animation: rise .32s cubic-bezier(.2, .7, .2, 1) both; }
+  .view-enter > *:nth-child(2) { animation-delay: .03s; } .view-enter > *:nth-child(3) { animation-delay: .06s; }
+  .view-enter > *:nth-child(4) { animation-delay: .09s; } .view-enter > *:nth-child(5) { animation-delay: .12s; }
+  .view-enter > *:nth-child(n+6) { animation-delay: .15s; }
+  dialog.sheet[open] { animation: up .24s cubic-bezier(.2, .7, .2, 1); }
   .toast { animation: up .18s ease-out; }
+  .fill { transition: width .5s cubic-bezier(.2, .7, .2, 1); }
 }
-@keyframes up { from { transform: translateY(16px); opacity: .6; } to { transform: none; opacity: 1; } }
+@keyframes rise { from { transform: translateY(8px); } to { transform: none; } }
+@keyframes up { from { transform: translateY(18px); opacity: .6; } to { transform: none; opacity: 1; } }
 </style>
 </head>
 <body>
 <div class="banner" id="banner"></div>
 <main class="app" id="view" aria-live="polite"></main>
 
-<button class="fab" id="fab" type="button" aria-label="Adicionar">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-</button>
-
 <nav class="nav" aria-label="Seções">
   <div class="nav-inner">
     <button type="button" data-tab="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg>Início</button>
     <button type="button" data-tab="extrato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h14v16l-3-2-2 2-2-2-2 2-2-2-3 2zM9 9h6M9 13h6"/></svg>Extrato</button>
+    <button class="fab" id="fab" type="button" aria-label="Novo lançamento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
     <button type="button" data-tab="lembretes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/></svg>Lembretes<span class="badge" id="badge" hidden></span></button>
-    <button type="button" data-tab="mais"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Mais</button>
+    <button type="button" data-tab="mais"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>Mais</button>
   </div>
 </nav>
 
@@ -225,7 +304,7 @@ dialog.sheet::backdrop { background: rgba(5, 12, 11, .45); }
 </script>
 <script>
 "use strict";
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "1.1.0";
 const KEY = "minhasContas.v1";
 const SNAP_PREFIX = "minhasContas.snap.";
 const { brl, ymd, fmtLocal, parseDate, parseLocal, addDays, nextOccurrence, RECURRENCES, fold, parseQuick, parseMoney, toICS } = Core;
@@ -436,16 +515,19 @@ function addToCalendar(rems) {
 }
 
 // ================= navegação =================
-const ui = { tab: "inicio", y: new Date().getFullYear(), m: new Date().getMonth(), filter: null, search: "" };
+const PRIV_KEY = "minhasContas.privado";
+const ui = { tab: "inicio", y: new Date().getFullYear(), m: new Date().getMonth(), filter: null, search: "", cols: "exp", lastTab: null,
+  private: (() => { try { return localStorage.getItem(PRIV_KEY) === "1"; } catch { return false; } })() };
 function go(tab) { ui.tab = tab; render(); scrollTo(0, 0); }
-$$(".nav button").forEach((b) => b.addEventListener("click", () => {
+$$(".nav button[data-tab]").forEach((b) => b.addEventListener("click", () => {
   if (b.dataset.tab === "extrato") { ui.y = new Date().getFullYear(); ui.m = new Date().getMonth(); }
   go(b.dataset.tab);
 }));
 $("#fab").addEventListener("click", () => (ui.tab === "lembretes" ? openRemSheet() : openTxSheet()));
 
 function render() {
-  $$(".nav button").forEach((b) => b.dataset.tab === ui.tab ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+  $$(".nav button[data-tab]").forEach((b) => b.dataset.tab === ui.tab ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+  document.body.classList.toggle("privado", ui.private);
   const due = dueReminders().length;
   $("#badge").hidden = !due; $("#badge").textContent = due;
   try { if (due) navigator.setAppBadge?.(due)?.catch(() => {}); else navigator.clearAppBadge?.()?.catch(() => {}); } catch {}
@@ -453,67 +535,349 @@ function render() {
   const views = { inicio: viewInicio, extrato: viewExtrato, lembretes: viewLembretes, mais: viewMais };
   const active = document.activeElement?.id;
   $("#view").innerHTML = (storageError ? `<div class="alert crit">⚠️ Os dados não estão sendo salvos neste navegador. Exporte um backup em Mais.</div>` : "") + views[ui.tab]();
+  $("#view").classList.toggle("view-enter", ui.lastTab !== ui.tab);
+  ui.lastTab = ui.tab;
   bindView();
+  drawCharts();
   if (active === "q") $("#q")?.focus();
 }
 
 // ================= telas =================
 function viewInicio() {
   const d = now(), y = d.getFullYear(), m = d.getMonth();
-  const s = summarize(txOfMonth(y, m));
+  const st = monthStats(y, m);
+  const s = st.sum;
   const due = dueReminders();
   const alerts = budgetStatus(y, m).filter((b) => b.pct >= 80);
   const soon = db.rem.filter((r) => !r.done && !isDue(r) && parseLocal(effWhen(r)) - d < 7 * 864e5)
-    .sort((a, b) => effWhen(a).localeCompare(effWhen(b))).slice(0, 4);
+    .sort((a, b) => effWhen(a).localeCompare(effWhen(b))).slice(0, 3);
   const recent = [...db.tx].sort((a, b) => b.date.localeCompare(a.date) || (b.created || 0) - (a.created || 0)).slice(0, 5);
   const backupOld = db.tx.length > 10 && (!db.meta.lastBackup || Date.now() - db.meta.lastBackup > 30 * 864e5);
+  const h = d.getHours();
+  const hello = h < 5 ? "Boa noite" : h < 12 ? "Bom dia" : h < 18 ? "Boa tarde" : "Boa noite";
+  const usedPct = s.inc > 0 ? Math.min(100, Math.round((100 * s.exp) / s.inc)) : null;
+  const prevName = MONTHS[(m + 11) % 12].slice(0, 3);
+  let delta = "";
+  if (st.prevSame > 0 && s.exp > 0) {
+    const p = Math.round((100 * (s.exp - st.prevSame)) / st.prevSame);
+    delta = `<span class="delta" title="Gastos até hoje comparados com o mesmo período de ${MONTHS[(m + 11) % 12]}">${p <= 0 ? "↓" : "↑"} ${Math.abs(p)}% vs ${prevName}</span>`;
+  }
 
   return `
+  <header class="top">
+    <div><p class="hello">${hello} 👋</p><h1>${MONTHS[m]}</h1></div>
+    <button class="icon-btn ghost" id="privacy" aria-pressed="${ui.private}" aria-label="${ui.private ? "Mostrar valores" : "Esconder valores"}">${ui.private ? ICON.eyeOff : ICON.eye}</button>
+  </header>
+
   <section class="hero">
-    <span class="eyebrow">Saldo de ${MONTHS[m]}</span>
+    <div class="hero-top"><span class="eyebrow">Saldo do mês</span>${delta}</div>
     <span class="big money">${brl(s.inc - s.exp)}</span>
-    <div class="hero-row money"><span>Entrou ${brl(s.inc)}</span><span>Saiu ${brl(s.exp)}</span></div>
+    <div class="hero-split">
+      <div><span class="k">${ICON.up} Entrou</span><span class="v money">${brl(s.inc)}</span></div>
+      <div><span class="k">${ICON.down} Saiu</span><span class="v money">${brl(s.exp)}</span></div>
+    </div>
+    ${usedPct != null ? `<div class="hero-meter"><span>Você já gastou ${usedPct}% do que entrou</span><span class="track"><span class="fill" style="width:${usedPct}%"></span></span></div>` : ""}
   </section>
 
   <section class="card quick">
     <form id="quick" autocomplete="off">
       <label for="q" class="sr">Escreva um gasto, receita ou lembrete</label>
       <input id="q" enterkeyhint="send" placeholder="gastei 45 no mercado…" value="${esc(ui.quick || "")}">
-      <button type="button" class="icon-btn" id="mic" aria-label="Falar" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
-      <button class="icon-btn primary" aria-label="Salvar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button type="button" class="icon-btn" id="mic" aria-label="Falar" hidden>${ICON.mic}</button>
+      <button class="icon-btn primary" aria-label="Salvar">${ICON.arrow}</button>
     </form>
     <div class="preview" id="qprev"></div>
     <p class="small muted" id="qhint">Escreva ou fale do seu jeito: “uber 23”, “recebi 3500 de salário”, “me lembra sexta 10h do dentista”.</p>
   </section>
 
+  <section class="stats">
+    ${statTile(ICON.wallet, "Pode gastar por dia", st.perDay > 0 ? brl(st.perDay) : "—", st.perDay > 0 ? `por ${st.left} dia${st.left > 1 ? "s" : ""}, até ${st.dim}/${String(m + 1).padStart(2, "0")}` : s.inc ? "saldo do mês acabou" : "registre o que entrou")}
+    ${statTile(ICON.trend, "Previsão do mês", s.exp ? brl(st.forecast) : "—", "no ritmo atual")}
+    ${statTile(ICON.cal, "Média por dia", s.exp ? brl(st.avg) : "—", `em ${st.day} dia${st.day > 1 ? "s" : ""}`)}
+    ${statTile(ICON.flame, "Maior gasto", st.biggest ? brl(st.biggest.cents) : "—", st.biggest ? st.biggest.desc || st.biggest.category : "nenhum ainda")}
+  </section>
+
   ${due.length || alerts.length ? `<section class="card"><div class="card-head"><h2>Agora</h2></div>
-    ${due.map(remRow).join("")}
-    ${alerts.map((b) => `<div class="alert ${level(b.pct)}">${b.pct >= 100 ? "⛔" : "⚠️"} <span><b>${esc(b.cat)}</b>: ${b.pct}% do orçamento (${brl(b.spent)} de ${brl(b.limit)})</span></div>`).join("")}
+    ${due.length ? `<div class="list">${due.map(remRow).join("")}</div>` : ""}
+    ${alerts.map((b) => `<div class="alert ${level(b.pct)}">${b.pct >= 100 ? "⛔" : "⚠️"} <span><b>${esc(b.cat)}</b>: ${b.pct}% do orçamento (<span class="money">${brl(b.spent)} de ${brl(b.limit)}</span>)</span></div>`).join("")}
   </section>` : ""}
+
+  <section class="card">
+    <div class="card-head"><div><h2>Ritmo de gastos</h2><p class="sub">Acumulado no mês, dia a dia</p></div></div>
+    <div class="chart" data-chart="pace" tabindex="0" aria-label="Gráfico do gasto acumulado de ${MONTHS[m]} comparado com ${MONTHS[(m + 11) % 12]}"></div>
+    <div class="legend"><span><i class="key" style="background:var(--accent)"></i>${MONTHS[m]}</span><span><i class="key" style="background:var(--ghost)"></i>${MONTHS[(m + 11) % 12]}</span></div>
+  </section>
+
+  <section class="card"><div class="card-head"><h2>Para onde foi o dinheiro</h2><button class="link" data-go="extrato">Extrato</button></div>
+    ${catBars(s.byCat.despesa, 5)}</section>
+
+  <section class="card">
+    <div class="card-head"><div><h2>Últimos 6 meses</h2><p class="sub">Toque numa coluna</p></div>
+      <div class="seg-mini" role="group" aria-label="Mostrar"><button data-cols="exp" aria-pressed="${ui.cols !== "inc"}">Gastos</button><button data-cols="inc" aria-pressed="${ui.cols === "inc"}">Entradas</button></div></div>
+    <div class="chart" data-chart="months" tabindex="0" aria-label="Gráfico de ${ui.cols === "inc" ? "entradas" : "gastos"} dos últimos 6 meses"></div>
+  </section>
 
   ${soon.length ? `<section class="card"><div class="card-head"><h2>Próximos lembretes</h2><button class="link" data-go="lembretes">Ver todos</button></div>
     <div class="list">${soon.map(remRow).join("")}</div></section>` : ""}
 
-  <section class="card"><div class="card-head"><h2>Gastos de ${MONTHS[m]}</h2><button class="link" data-go="extrato">Extrato</button></div>
-    ${catBars(s.byCat.despesa, 6)}</section>
-
-  <section class="card"><div class="card-head"><h2>Últimos lançamentos</h2></div>
+  <section class="card"><div class="card-head"><h2>Últimos lançamentos</h2><button class="link" data-go="extrato">Ver todos</button></div>
     ${recent.length ? `<div class="list">${recent.map(txRow).join("")}</div>` : `<p class="empty">Nada ainda. Escreva “mercado 50” ali em cima ou toque no +.</p>`}
   </section>
-  ${backupOld ? `<div class="alert info">💾 Faz tempo que você não salva um backup. <button class="link" data-go="mais">Fazer agora</button></div>` : ""}`;
+  ${backupOld ? `<div class="alert info">💾 <span>Faz tempo que você não salva um backup. <button class="link" data-go="mais">Fazer agora</button></span></div>` : ""}`;
+}
+
+function statTile(icon, label, value, hint) {
+  return `<div class="stat"><span class="ic" aria-hidden="true">${icon}</span><span class="label">${label}</span>
+    <span class="value money">${value}</span><span class="hint">${esc(hint)}</span></div>`;
+}
+
+function monthStats(y, m) {
+  const today = now();
+  const isCurrent = y === today.getFullYear() && m === today.getMonth();
+  const dim = Core.lastDayOfMonth(y, m);
+  const day = isCurrent ? today.getDate() : dim;
+  const list = txOfMonth(y, m);
+  const sum = summarize(list);
+  const avg = Math.round(sum.exp / day);
+  const forecast = isCurrent ? Math.round((sum.exp / day) * dim) : sum.exp;
+  const left = dim - day + 1;
+  const free = sum.inc - sum.exp;
+  const perDay = free > 0 ? Math.floor(free / left / 100) * 100 : 0;
+  const biggest = list.filter((t) => t.kind === "despesa").sort((a, b) => b.cents - a.cents)[0];
+  const pm = new Date(y, m - 1, 1);
+  const prevDim = Core.lastDayOfMonth(pm.getFullYear(), pm.getMonth());
+  const prevSame = txOfMonth(pm.getFullYear(), pm.getMonth())
+    .filter((t) => t.kind === "despesa" && Number(t.date.slice(8)) <= Math.min(day, prevDim))
+    .reduce((a, t) => a + t.cents, 0);
+  return { sum, dim, day, avg, forecast, left, perDay, biggest, prevSame, prevDim, isCurrent };
+}
+
+function cumulative(y, m, upTo) {
+  const dim = Core.lastDayOfMonth(y, m);
+  const perDay = new Array(dim).fill(0);
+  for (const t of txOfMonth(y, m)) if (t.kind === "despesa") perDay[Number(t.date.slice(8)) - 1] += t.cents;
+  let acc = 0;
+  return perDay.map((v, i) => (i + 1 > upTo ? null : (acc += v)));
 }
 
 function catBars(byCat, limit) {
   const items = Object.entries(byCat).sort((a, b) => b[1] - a[1]);
   if (!items.length) return `<p class="empty">Sem gastos neste mês.</p>`;
   const top = items[0][1], total = items.reduce((a, [, v]) => a + v, 0);
-  const shown = limit ? items.slice(0, limit) : items;
-  return `<div class="bars">${shown.map(([cat, v]) => `
-    <button class="bar-row" data-cat="${esc(cat)}" aria-label="${esc(cat)}: ${brl(v)}">
-      <span class="bar-line"><span class="name">${catOf("despesa", cat).icon} ${esc(cat)}</span><span class="val money">${brl(v)} · ${Math.round((100 * v) / total)}%</span></span>
-      <span class="track"><span class="fill" style="display:block;width:${((100 * v) / top).toFixed(1)}%"></span></span>
-    </button>`).join("")}</div>`;
+  let shown = items;
+  if (limit && items.length > limit) {
+    const rest = items.slice(limit - 1).reduce((a, [, v]) => a + v, 0);
+    shown = [...items.slice(0, limit - 1), ["__resto", rest]];
+  }
+  return `<div class="bars">${shown.map(([cat, v]) => {
+    const rest = cat === "__resto";
+    const name = rest ? `outras ${items.length - limit + 1} categorias` : cat;
+    return `<button class="bar-row" ${rest ? 'data-go="extrato"' : `data-cat="${esc(cat)}"`} aria-label="${esc(name)}: ${brl(v)}">
+      <span class="ico" aria-hidden="true">${rest ? "•••" : catOf("despesa", cat).icon}</span>
+      <span class="bar-line"><span class="name">${esc(name)}</span><span><span class="val money">${brl(v)}</span><span class="pct">${Math.round((100 * v) / total)}%</span></span></span>
+      <span class="track"><span class="fill" style="width:${((100 * v) / top).toFixed(1)}%"></span></span>
+    </button>`;
+  }).join("")}</div>`;
 }
+
+// ================= gráficos (SVG desenhado no tamanho da tela) =================
+const SVGNS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs = {}, parent) {
+  const el = document.createElementNS(SVGNS, tag);
+  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+  if (parent) parent.appendChild(el);
+  return el;
+}
+function niceStep(raw) {
+  const exp = Math.pow(10, Math.floor(Math.log10(raw)));
+  const f = raw / exp;
+  return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * exp;
+}
+function brlShort(cents) {
+  const v = cents / 100;
+  if (v >= 1000) return `R$ ${(v / 1000).toFixed(v >= 10000 || v % 1000 === 0 ? 0 : 1).replace(".", ",")} mil`;
+  return `R$ ${Math.round(v)}`;
+}
+function makeTip(chart) {
+  const tip = document.createElement("div");
+  tip.className = "tip";
+  chart.appendChild(tip);
+  return tip;
+}
+function tipRows(tip, head, rows) {
+  tip.replaceChildren();
+  const hd = document.createElement("div");
+  hd.className = "t-head";
+  hd.textContent = head;
+  tip.appendChild(hd);
+  for (const r of rows) {
+    const row = document.createElement("div");
+    row.className = "t-row";
+    if (r.color) { const k = document.createElement("i"); k.className = "key"; k.style.background = r.color; row.appendChild(k); }
+    const b = document.createElement("b");
+    b.textContent = ui.private ? "R$ •••" : r.value;
+    row.appendChild(b);
+    row.appendChild(document.createTextNode(" " + r.label));
+    tip.appendChild(row);
+  }
+}
+function placeTip(chart, tip, x) {
+  const w = chart.clientWidth, tw = tip.offsetWidth;
+  tip.style.left = Math.max(0, Math.min(w - tw, x - tw / 2)) + "px";
+  tip.style.top = "-6px";
+}
+function bindPointer(chart, onMove, steps) {
+  let hideTimer;
+  const move = (e) => {
+    const r = chart.getBoundingClientRect();
+    clearTimeout(hideTimer);
+    chart.classList.add("active");
+    onMove(e.clientX - r.left);
+  };
+  chart.addEventListener("pointerdown", move);
+  chart.addEventListener("pointermove", (e) => { if (e.pointerType === "mouse" || e.buttons) move(e); });
+  chart.addEventListener("pointerleave", () => chart.classList.remove("active"));
+  chart.addEventListener("pointerup", (e) => { if (e.pointerType !== "mouse") hideTimer = setTimeout(() => chart.classList.remove("active"), 2500); });
+  let k = -1;
+  chart.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    k = Math.max(0, Math.min(steps.length - 1, (k < 0 ? steps.length - 1 : k) + (e.key === "ArrowRight" ? 1 : -1)));
+    chart.classList.add("active");
+    onMove(steps[k]);
+  });
+  chart.addEventListener("blur", () => chart.classList.remove("active"));
+}
+
+function drawPace(chart) {
+  const d = now(), y = d.getFullYear(), m = d.getMonth();
+  const pm = new Date(y, m - 1, 1);
+  const cur = cumulative(y, m, d.getDate());
+  const prev = cumulative(pm.getFullYear(), pm.getMonth(), 99);
+  const W = chart.clientWidth || 320, H = 176;
+  const L = 46, R = 14, T = 34, B = 24;
+  const pw = W - L - R, ph = H - T - B;
+  const xmax = Math.max(cur.length, prev.length);
+  const maxV = Math.max(1, ...cur.filter((v) => v != null), ...prev);
+  const step = niceStep(maxV / 3 / 100) * 100;
+  const ymax = Math.max(step, Math.ceil(maxV / step) * step);
+  const X = (i) => L + (pw * i) / (xmax - 1);
+  const Y = (v) => T + ph - (ph * v) / ymax;
+  const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img" });
+  svg.setAttribute("aria-hidden", "true");
+  for (let v = 0; v <= ymax + 1; v += step) {
+    svgEl("line", { x1: L, x2: W - R, y1: Y(v), y2: Y(v), class: "grid" }, svg);
+    svgEl("text", { x: L - 8, y: Y(v) + 4, "text-anchor": "end", class: "axis money" }, svg).textContent = v ? brlShort(v) : "0";
+  }
+  for (const day of [1, 10, 20, xmax]) svgEl("text", { x: X(day - 1), y: H - 6, "text-anchor": day === 1 ? "start" : day === xmax ? "end" : "middle", class: "axis" }, svg).textContent = day;
+  const path = (arr) => arr.map((v, i) => (v == null ? null : `${X(i).toFixed(1)},${Y(v).toFixed(1)}`)).filter(Boolean);
+  const pp = path(prev);
+  if (pp.length > 1) svgEl("polyline", { points: pp.join(" "), fill: "none", stroke: "var(--ghost)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+  const cp = path(cur);
+  const lastI = cur.reduce((a, v, i) => (v != null ? i : a), 0);
+  if (cp.length > 1) {
+    svgEl("polygon", { points: `${X(0)},${Y(0)} ${cp.join(" ")} ${X(lastI)},${Y(0)}`, fill: "var(--accent-wash)" }, svg);
+    svgEl("polyline", { points: cp.join(" "), fill: "none", stroke: "var(--accent)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+  }
+  const ex = X(lastI), ey = Y(cur[lastI] || 0);
+  svgEl("circle", { cx: ex, cy: ey, r: 4, fill: "var(--accent)", stroke: "var(--surface)", "stroke-width": 2 }, svg);
+  const lbl = svgEl("text", { x: Math.min(ex, W - R), y: ey - 10, "text-anchor": ex > W - 80 ? "end" : "middle", class: "lbl money" }, svg);
+  lbl.textContent = brl(cur[lastI] || 0);
+  const hair = svgEl("line", { y1: T - 4, y2: T + ph, class: "hair" }, svg);
+  const dotC = svgEl("circle", { r: 4, fill: "var(--accent)", stroke: "var(--surface)", "stroke-width": 2, opacity: 0 }, svg);
+  const dotP = svgEl("circle", { r: 4, fill: "var(--ghost)", stroke: "var(--surface)", "stroke-width": 2, opacity: 0 }, svg);
+  chart.replaceChildren(svg);
+  const tip = makeTip(chart);
+  const cs = getComputedStyle(document.documentElement);
+  const accent = cs.getPropertyValue("--accent").trim(), ghost = cs.getPropertyValue("--ghost").trim();
+  const show = (px) => {
+    const i = Math.max(0, Math.min(xmax - 1, Math.round(((px - L) / pw) * (xmax - 1))));
+    const x = X(i);
+    hair.setAttribute("x1", x); hair.setAttribute("x2", x);
+    const rows = [];
+    if (cur[i] != null) { dotC.setAttribute("cx", x); dotC.setAttribute("cy", Y(cur[i])); dotC.setAttribute("opacity", 1); rows.push({ color: accent, value: brl(cur[i]), label: MONTHS[m].slice(0, 3) }); }
+    else dotC.setAttribute("opacity", 0);
+    if (prev[i] != null) { dotP.setAttribute("cx", x); dotP.setAttribute("cy", Y(prev[i])); dotP.setAttribute("opacity", 1); rows.push({ color: ghost, value: brl(prev[i]), label: MONTHS[pm.getMonth()].slice(0, 3) }); }
+    else dotP.setAttribute("opacity", 0);
+    tipRows(tip, `Até o dia ${i + 1}`, rows);
+    placeTip(chart, tip, x);
+  };
+  bindPointer(chart, show, Array.from({ length: xmax }, (_, i) => X(i)));
+}
+
+function drawMonths(chart) {
+  const d = now();
+  const months = [];
+  for (let k = 5; k >= 0; k--) {
+    const dt = new Date(d.getFullYear(), d.getMonth() - k, 1);
+    const s = summarize(txOfMonth(dt.getFullYear(), dt.getMonth()));
+    months.push({ y: dt.getFullYear(), m: dt.getMonth(), inc: s.inc, exp: s.exp });
+  }
+  const key = ui.cols === "inc" ? "inc" : "exp";
+  const W = chart.clientWidth || 320, H = 168;
+  const L = 6, R = 6, T = 28, B = 24;
+  const pw = W - L - R, ph = H - T - B;
+  const slot = pw / months.length;
+  const bw = Math.min(24, slot * 0.5);
+  const maxV = Math.max(1, ...months.map((x) => x[key]));
+  const Y = (v) => T + ph - (ph * v) / maxV;
+  const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, height: H });
+  svg.setAttribute("aria-hidden", "true");
+  svgEl("line", { x1: L, x2: W - R, y1: T + ph + 0.5, y2: T + ph + 0.5, class: "grid" }, svg);
+  const maxIdx = months.reduce((a, x, i) => (x[key] > months[a][key] ? i : a), 0);
+  const bars = [];
+  months.forEach((mo, i) => {
+    const cx = L + slot * i + slot / 2;
+    const v = mo[key], top = Y(v), h = T + ph - top;
+    const isCur = i === months.length - 1;
+    if (v > 0) {
+      const r = Math.min(4, h, bw / 2), x0 = cx - bw / 2, x1 = cx + bw / 2, yb = T + ph;
+      svgEl("path", { d: `M${x0},${yb} V${top + r} Q${x0},${top} ${x0 + r},${top} H${x1 - r} Q${x1},${top} ${x1},${top + r} V${yb} Z`, fill: "var(--accent)", opacity: isCur ? 1 : 0.38, class: "bar" }, svg);
+    }
+    if (v > 0 && (isCur || i === maxIdx)) svgEl("text", { x: cx, y: top - 7, "text-anchor": "middle", class: "lbl money" }, svg).textContent = brlShort(v);
+    svgEl("text", { x: cx, y: H - 6, "text-anchor": "middle", class: "axis", "font-weight": isCur ? 700 : 400 }, svg).textContent = MONTHS[mo.m].slice(0, 3);
+    bars.push(cx);
+  });
+  const hl = svgEl("rect", { y: T - 4, height: ph + 4, width: slot - 4, rx: 10, fill: "var(--accent-wash)", opacity: 0 }, svg);
+  svg.insertBefore(hl, svg.firstChild);
+  chart.replaceChildren(svg);
+  const tip = makeTip(chart);
+  const cs = getComputedStyle(document.documentElement);
+  const show = (px) => {
+    const i = Math.max(0, Math.min(months.length - 1, Math.floor((px - L) / slot)));
+    const mo = months[i];
+    hl.setAttribute("x", L + slot * i + 2); hl.setAttribute("opacity", 1);
+    tipRows(tip, `${MONTHS[mo.m]} ${mo.y}`, [
+      { value: brl(mo.inc), label: "entrou" },
+      { value: brl(mo.exp), label: "saiu" },
+      { value: brl(mo.inc - mo.exp), label: "saldo" },
+    ]);
+    placeTip(chart, tip, bars[i]);
+  };
+  chart.addEventListener("pointerleave", () => hl.setAttribute("opacity", 0));
+  bindPointer(chart, show, bars);
+}
+
+function drawCharts() {
+  for (const el of $$("[data-chart]")) {
+    try { (el.dataset.chart === "pace" ? drawPace : drawMonths)(el); } catch (e) { console.warn("gráfico", e); }
+  }
+}
+let resizeTimer;
+addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawCharts, 150); });
+
+const ICON = {
+  eye: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  eyeOff: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 5.1A10.8 10.8 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6C3.8 8.4 2 12 2 12s3.5 7 10 7c1.8 0 3.4-.5 4.7-1.3M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>`,
+  up: `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>`,
+  down: `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>`,
+  mic: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>`,
+  arrow: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`,
+  wallet: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h1"/></svg>`,
+  trend: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>`,
+  cal: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>`,
+  flame: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 4.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 1.5-4S9 12 11 12c0-4 1-9 1-9z"/></svg>`,
+};
 
 function txRow(t) {
   const c = catOf(t.kind, t.category);
@@ -564,7 +928,7 @@ function viewExtrato() {
 
   <section class="card"><div class="card-head"><h2>Orçamentos</h2><button class="link" data-go="mais">Definir</button></div>
     ${budgets.length ? `<div class="bars">${budgets.map((b) => `
-      <div class="bar-row">
+      <div class="bar-plain">
         <span class="bar-line"><span class="name">${catOf("despesa", b.cat).icon} ${esc(b.cat)} <span class="status ${level(b.pct)}">${levelLabel[level(b.pct)]}</span></span><span class="val money">${brl(b.spent)} de ${brl(b.limit)}</span></span>
         <span class="track"><span class="fill ${level(b.pct)}" style="display:block;width:${Math.min(b.pct, 100)}%"></span></span>
       </div>`).join("")}</div>` : `<p class="empty">Defina um limite mensal por categoria em Mais → Orçamentos.</p>`}
@@ -572,7 +936,7 @@ function viewExtrato() {
 
   <section class="card">
     <div class="card-head"><h2>Lançamentos (${list.length})</h2></div>
-    <div class="field"><label class="sr" for="search">Buscar</label><input id="search" type="search" placeholder="Buscar…" value="${esc(ui.search)}"></div>
+    <label class="sr" for="search">Buscar</label><input id="search" class="search" type="search" placeholder="Buscar descrição, categoria…" value="${esc(ui.search)}">
     ${usedCats.length > 1 ? `<div class="chips" role="group" aria-label="Filtrar por categoria">
       <button class="chip" data-filter="" aria-pressed="${!ui.filter}">Todas</button>
       ${usedCats.map((c) => `<button class="chip" data-filter="${esc(c)}" aria-pressed="${ui.filter === c}">${catIcon(c)} ${esc(c)}</button>`).join("")}
@@ -654,6 +1018,7 @@ function bindView() {
     if (!t) return;
     const d = t.dataset;
     if (d.go) return go(d.go);
+    if (d.cols) { ui.cols = d.cols; return render(); }
     if (d.done) return completeRem(d.done);
     if (d.snooze) return snoozeRem(d.snooze, 60);
     if (d.tx) return openTxSheet(db.tx.find((x) => x.id === d.tx));
@@ -665,6 +1030,10 @@ function bindView() {
     if (d.addcat) return openCategorySheet(d.addcat);
     if (d.snap) return restoreSnapshot(d.snap);
     switch (t.id) {
+      case "privacy":
+        ui.private = !ui.private;
+        try { localStorage.setItem(PRIV_KEY, ui.private ? "1" : "0"); } catch {}
+        return render();
       case "ask-notif": return askNotifications();
       case "all-cal": return addToCalendar(db.rem.filter((r) => !r.done));
       case "export": return exportBackup();

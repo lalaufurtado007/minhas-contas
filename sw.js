@@ -4,7 +4,8 @@
      em segundo plano e avisa a página ("Nova versão pronta").
    - Os dados (lançamentos, lembretes) NÃO ficam aqui: ficam no armazenamento da página,
      então atualizar o app nunca apaga nada. */
-const CACHE = "minhas-contas-shell-v1";
+const CACHE = "minhas-contas-shell-v2";
+const FONT_CACHE = "minhas-contas-fonts";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon.svg", "./icon-192.png", "./icon-512.png"];
 const SHELL_KEY = "./index.html";
 
@@ -15,7 +16,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k.startsWith("minhas-contas-") && k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith("minhas-contas-") && k !== CACHE && k !== FONT_CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -59,6 +60,18 @@ self.addEventListener("fetch", (event) => {
       await update;
       return (await caches.match(SHELL_KEY)) || fetch(req);
     })());
+    return;
+  }
+  const host = new URL(req.url).hostname;
+  if (host === "fonts.googleapis.com" || host === "fonts.gstatic.com") {
+    // fonte do app: guarda na primeira vez para funcionar offline
+    event.respondWith(caches.open(FONT_CACHE).then(async (c) => {
+      const hit = await c.match(req);
+      if (hit) return hit;
+      const res = await fetch(req);
+      if (res.ok || res.type === "opaque") c.put(req, res.clone());
+      return res;
+    }));
     return;
   }
   if (new URL(req.url).origin === location.origin) {
