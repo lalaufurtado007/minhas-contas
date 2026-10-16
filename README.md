@@ -12,6 +12,11 @@ App pessoal de gastos, receitas, orçamentos e lembretes. É um HTML que instala
   “toda segunda às 7h levar o lixo”. Repetem por dia, dias úteis, semana, mês ou ano.
   Lembrete de conta com valor: ao marcar “Feito”, o app oferece registrar o pagamento.
 - **Orçamentos** por categoria, com aviso aos 80% e ao estourar.
+- **Dívidas** (aba própria): cadastre empréstimos, cartão, financiamentos ou dinheiro que deve a alguém, com
+  parcelas e dia de vencimento. A cada pagamento o app mostra quanto falta, quantas parcelas foram pagas,
+  quando você quita e avisa as atrasadas. Juros e descontos entram em “Ajustar saldo”. O pagamento pode ir
+  também para o extrato (categoria “dívidas”) e o vencimento vira lembrete mensal. Escrever
+  “paguei 350 do empréstimo” na caixa do Início já registra o pagamento na dívida certa.
 - **Extrato** por mês, com gastos por categoria, busca e filtros.
 - **Backup** em arquivo (Drive, e-mail, WhatsApp), cópias automáticas dos últimos 7 dias e exportação em planilha (CSV).
 

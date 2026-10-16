@@ -29,19 +29,31 @@
   --muted: #5e6b67;
   --faint: #8b9894;
   --line: #e2e8e6;
-  --accent: #0b6e62;
+  --accent: #0a7c6c;
   --accent-ink: #ffffff;
-  --accent-soft: #dbeee9;
-  --accent-wash: rgba(11, 110, 98, .12);
+  --accent-soft: #d7f1ea;
+  --accent-wash: rgba(10, 124, 108, .13);
   --ghost: #b3bdba;
-  --hero-a: #0b3f39;
-  --hero-b: #0b7366;
+  --hero-a: #04332f;
+  --hero-b: #0a7c6c;
+  --hero-c: #19b39a;
+  --debt-a: #6e1230;
+  --debt-b: #d2434a;
+  --debt-c: #f2845a;
+  --mint: #0b8a5e;  --mint-bg: #d8f6e9;
+  --sky: #1f62d0;   --sky-bg: #dfeaff;
+  --amber: #a35a00; --amber-bg: #ffefcf;
+  --rose: #c42452;  --rose-bg: #ffe1ea;
+  --mesh-1: rgba(25, 179, 154, .16);
+  --mesh-2: rgba(80, 140, 255, .10);
   --income: #15803d;
   --good: #15803d;  --good-bg: #dcf3e3;
   --warn: #935400;  --warn-bg: #fdefd5; --warn-bar: #e6a01e;
   --crit: #c2362f;  --crit-bg: #fbe2e0;
-  --shadow: 0 1px 2px rgba(15, 25, 23, .05), 0 10px 30px -14px rgba(15, 25, 23, .22);
-  --shadow-lg: 0 18px 40px -18px rgba(11, 63, 57, .55);
+  --shadow: 0 1px 1px rgba(16, 24, 40, .03), 0 2px 6px -1px rgba(16, 24, 40, .05), 0 16px 34px -16px rgba(16, 24, 40, .18);
+  --shadow-lg: 0 6px 14px -6px rgba(4, 51, 47, .35), 0 26px 50px -20px rgba(10, 124, 108, .6);
+  --shadow-debt: 0 6px 14px -6px rgba(110, 18, 48, .35), 0 26px 50px -20px rgba(210, 67, 74, .55);
+  --shadow-fab: 0 10px 22px -6px rgba(10, 124, 108, .65), inset 0 1px 0 rgba(255, 255, 255, .25);
   --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --radius: 20px;
   --nav-h: 66px;
@@ -50,24 +62,38 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   color-scheme: dark;
   --bg: #0a0f0e; --surface: #131a18; --surface-2: #1a2320; --ink: #eef3f1; --muted: #9ba9a5; --faint: #6f7d79; --line: #24302c;
-  --accent: #45c3b1; --accent-ink: #04201b; --accent-soft: #15322d; --accent-wash: rgba(69, 195, 177, .14); --ghost: #4c5a56;
-  --hero-a: #0c2d29; --hero-b: #106357; --income: #5fd17f;
+  --accent: #3fd0b8; --accent-ink: #03211c; --accent-soft: #123630; --accent-wash: rgba(63, 208, 184, .15); --ghost: #4c5a56;
+  --hero-a: #032a26; --hero-b: #0a6b5d; --hero-c: #13a08a; --income: #5fd17f;
+  --debt-a: #4d0c22; --debt-b: #a8323c; --debt-c: #d56a48;
+  --mint: #4fe0a8; --mint-bg: #10362a; --sky: #86b5ff; --sky-bg: #16294a; --amber: #f7bf61; --amber-bg: #3a2b10; --rose: #ff8fae; --rose-bg: #401a27;
+  --mesh-1: rgba(63, 208, 184, .10); --mesh-2: rgba(80, 140, 255, .07);
   --good: #5fd17f; --good-bg: #16301f; --warn: #f2b34d; --warn-bg: #362812; --warn-bar: #e6a01e;
   --crit: #ff7b72; --crit-bg: #3a1a18; --card-border: #1f2926;
-  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7); --shadow-lg: 0 18px 40px -18px rgba(0,0,0,.8);
+  --shadow: 0 1px 2px rgba(0,0,0,.45), 0 16px 34px -16px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.035);
+  --shadow-lg: 0 6px 14px -6px rgba(0,0,0,.5), 0 26px 50px -20px rgba(19, 160, 138, .45);
+  --shadow-debt: 0 6px 14px -6px rgba(0,0,0,.5), 0 26px 50px -20px rgba(168, 50, 60, .45);
+  --shadow-fab: 0 10px 22px -6px rgba(19, 160, 138, .55), inset 0 1px 0 rgba(255, 255, 255, .2);
 } }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #0a0f0e; --surface: #131a18; --surface-2: #1a2320; --ink: #eef3f1; --muted: #9ba9a5; --faint: #6f7d79; --line: #24302c;
-  --accent: #45c3b1; --accent-ink: #04201b; --accent-soft: #15322d; --accent-wash: rgba(69, 195, 177, .14); --ghost: #4c5a56;
-  --hero-a: #0c2d29; --hero-b: #106357; --income: #5fd17f;
+  --accent: #3fd0b8; --accent-ink: #03211c; --accent-soft: #123630; --accent-wash: rgba(63, 208, 184, .15); --ghost: #4c5a56;
+  --hero-a: #032a26; --hero-b: #0a6b5d; --hero-c: #13a08a; --income: #5fd17f;
+  --debt-a: #4d0c22; --debt-b: #a8323c; --debt-c: #d56a48;
+  --mint: #4fe0a8; --mint-bg: #10362a; --sky: #86b5ff; --sky-bg: #16294a; --amber: #f7bf61; --amber-bg: #3a2b10; --rose: #ff8fae; --rose-bg: #401a27;
+  --mesh-1: rgba(63, 208, 184, .10); --mesh-2: rgba(80, 140, 255, .07);
   --good: #5fd17f; --good-bg: #16301f; --warn: #f2b34d; --warn-bg: #362812; --warn-bar: #e6a01e;
   --crit: #ff7b72; --crit-bg: #3a1a18; --card-border: #1f2926;
-  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7); --shadow-lg: 0 18px 40px -18px rgba(0,0,0,.8);
+  --shadow: 0 1px 2px rgba(0,0,0,.45), 0 16px 34px -16px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.035);
+  --shadow-lg: 0 6px 14px -6px rgba(0,0,0,.5), 0 26px 50px -20px rgba(19, 160, 138, .45);
+  --shadow-debt: 0 6px 14px -6px rgba(0,0,0,.5), 0 26px 50px -20px rgba(168, 50, 60, .45);
+  --shadow-fab: 0 10px 22px -6px rgba(19, 160, 138, .55), inset 0 1px 0 rgba(255, 255, 255, .2);
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html { height: 100%; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(70% 45% at 0% 0%, var(--mesh-1), transparent 70%), radial-gradient(60% 40% at 100% 0%, var(--mesh-2), transparent 70%); }
 body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font: 15.5px/1.45 var(--font); -webkit-font-smoothing: antialiased; }
 button, input, select, textarea { font: inherit; color: inherit; }
 .num { font-variant-numeric: tabular-nums; }
@@ -98,7 +124,7 @@ h2 { font-size: 16px; font-weight: 700; }
 
 /* cartão de saldo */
 .hero { position: relative; overflow: hidden; color: #fff; border-radius: 24px; padding: 18px 18px 16px; display: grid; gap: 10px;
-  background: radial-gradient(120% 140% at 100% 0%, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 45%), linear-gradient(140deg, var(--hero-a), var(--hero-b));
+  background: radial-gradient(120% 140% at 100% 0%, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 45%), linear-gradient(140deg, var(--hero-a) 0%, var(--hero-b) 58%, var(--hero-c) 100%);
   box-shadow: var(--shadow-lg); }
 .hero::after { content: ""; position: absolute; right: -40px; bottom: -60px; width: 180px; height: 180px; border-radius: 50%; border: 26px solid rgba(255,255,255,.06); pointer-events: none; }
 .hero .eyebrow { color: rgba(255,255,255,.78); }
@@ -120,7 +146,7 @@ h2 { font-size: 16px; font-weight: 700; }
 .quick input:focus { outline: 2px solid var(--accent); outline-offset: 0; }
 .quick .small { padding: 0 6px 4px; }
 .icon-btn { flex: none; width: 46px; height: 46px; border-radius: 14px; border: 0; background: var(--surface-2); display: grid; place-items: center; cursor: pointer; color: var(--ink); }
-.icon-btn.primary { background: var(--accent); color: var(--accent-ink); }
+.icon-btn.primary { background: linear-gradient(140deg, var(--hero-c), var(--hero-b)); color: #fff; box-shadow: 0 6px 14px -6px rgba(10, 124, 108, .6); }
 .icon-btn.ghost { background: var(--surface); box-shadow: var(--shadow); }
 .icon-btn.listening { background: var(--crit); color: #fff; }
 .icon-btn svg { width: 22px; height: 22px; }
@@ -133,7 +159,8 @@ h2 { font-size: 16px; font-weight: 700; }
 .preview-actions { display: flex; gap: 8px; }
 
 .btn { border: 0; background: var(--surface-2); border-radius: 14px; padding: 11px 16px; font-weight: 700; cursor: pointer; min-height: 44px; color: var(--ink); }
-.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.primary { background: linear-gradient(140deg, var(--hero-c), var(--hero-b)); color: #fff; box-shadow: 0 6px 14px -6px rgba(10, 124, 108, .55); }
+.btn.sm { min-height: 36px; padding: 7px 16px; font-size: 14px; }
 .btn.danger { color: var(--crit); background: var(--crit-bg); }
 .btn.block { width: 100%; }
 .btn:disabled { opacity: .5; }
@@ -144,6 +171,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .stat { background: var(--surface); border: 1px solid var(--card-border); border-radius: 18px; padding: 13px 14px; display: grid; gap: 2px; min-width: 0; box-shadow: var(--shadow); }
 .stat .ic { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 6px; }
 .stat .ic svg { width: 17px; height: 17px; }
+.ic.mint { background: var(--mint-bg); color: var(--mint); } .ic.sky { background: var(--sky-bg); color: var(--sky); }
+.ic.amber { background: var(--amber-bg); color: var(--amber); } .ic.rose { background: var(--rose-bg); color: var(--rose); }
 .stat .label { font-size: 12.5px; color: var(--muted); font-weight: 600; }
 .stat .value { font-size: 19px; font-weight: 800; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .stat .hint { font-size: 12px; color: var(--faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -231,7 +260,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .nav button svg { width: 23px; height: 23px; }
 .nav button[aria-current="page"] { color: var(--accent); }
 .nav button[aria-current="page"]::before { content: ""; position: absolute; top: 6px; width: 34px; height: 3px; border-radius: 2px; background: var(--accent); }
-.nav .fab { width: 54px; height: 54px; border-radius: 18px; border: 0; background: linear-gradient(140deg, var(--hero-b), var(--hero-a)); color: #fff; box-shadow: 0 8px 18px -6px rgba(11, 110, 98, .6); display: grid; place-items: center; cursor: pointer; margin: 0 auto; transform: translateY(-14px); }
+.nav .fab { width: 54px; height: 54px; border-radius: 18px; border: 0; background: linear-gradient(140deg, var(--hero-c), var(--hero-b) 55%, var(--hero-a)); color: #fff; box-shadow: var(--shadow-fab); display: grid; place-items: center; cursor: pointer; margin: 0 auto; transform: translateY(-14px); }
 .nav .fab svg { width: 26px; height: 26px; }
 .badge { position: absolute; top: 9px; left: calc(50% + 5px); min-width: 18px; height: 18px; border-radius: 9px; background: var(--crit); color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; padding: 0 5px; }
 
@@ -264,6 +293,50 @@ dialog.sheet::backdrop { background: rgba(5, 12, 11, .5); -webkit-backdrop-filte
 .setting:first-of-type { border-top: 0; }
 .setting .money-in { width: 120px; text-align: right; border: 0; background: var(--surface-2); border-radius: 12px; padding: 9px 12px; font-size: 16px; }
 
+
+/* topo com ações */
+.top-actions { display: flex; gap: 8px; }
+
+/* dívidas */
+.debt-hero { background: radial-gradient(120% 140% at 100% 0%, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 45%), linear-gradient(140deg, var(--debt-a) 0%, var(--debt-b) 60%, var(--debt-c) 100%); box-shadow: var(--shadow-debt); }
+.debts { display: grid; gap: 12px; }
+.debt { background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 16px; display: grid; gap: 12px; box-shadow: var(--shadow); cursor: pointer; position: relative; overflow: hidden; }
+.debt::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(var(--debt-c), var(--debt-b)); }
+.debt.is-done::before { background: var(--good); }
+.debt.is-done { opacity: .85; }
+.debt-top { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.debt-top .ico { flex: none; width: 44px; height: 44px; border-radius: 14px; background: var(--rose-bg); display: grid; place-items: center; font-size: 21px; }
+.debt-top .main { flex: 1; min-width: 0; }
+.debt-top .title { display: block; font-weight: 750; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.debt-top .sub { display: block; font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.debt-mid { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.debt-mid > div { display: grid; min-width: 0; }
+.debt-mid .r { text-align: right; }
+.debt-mid .k { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.debt-mid .v { font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+.debt-mid .v2 { font-size: 13px; font-weight: 650; color: var(--muted); }
+.debt-track { height: 10px; border-radius: 5px; background: var(--rose-bg); }
+.debt-fill { background: linear-gradient(90deg, var(--debt-b), var(--debt-c)); border-radius: 5px; }
+.is-done .debt-fill { background: var(--good); }
+.debt-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.debt-mini { cursor: pointer; }
+.debt-sum { display: grid; gap: 6px; background: var(--surface-2); border-radius: 16px; padding: 14px; }
+.debt-sum .k { font-size: 13px; color: var(--muted); font-weight: 600; }
+.debt-sum .v { font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.facts > div { display: grid; gap: 1px; background: var(--surface-2); border-radius: 14px; padding: 10px 12px; min-width: 0; }
+.facts .k { font-size: 12px; color: var(--muted); font-weight: 600; }
+.facts .v { font-weight: 700; font-size: 14.5px; overflow-wrap: anywhere; }
+.empty-state { text-align: center; justify-items: center; padding: 28px 20px; }
+.empty-state .big-ico { width: 72px; height: 72px; border-radius: 22px; display: grid; place-items: center; font-size: 34px; background: var(--rose-bg); box-shadow: var(--shadow); }
+.empty-state p { max-width: 42ch; }
+.check { display: flex; gap: 10px; align-items: center; font-size: 14.5px; font-weight: 600; cursor: pointer; }
+.check input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+details.card > summary { cursor: pointer; list-style: none; }
+details.card > summary::-webkit-details-marker { display: none; }
+details.card > summary::after { content: "▾"; float: right; color: var(--muted); }
+details.card[open] > summary::after { content: "▴"; }
+
 /* modo privado: esconde os valores */
 .privado .money { filter: blur(7px); }
 .privado .chart .axis.money, .privado .chart .lbl.money { visibility: hidden; }
@@ -290,8 +363,8 @@ dialog.sheet::backdrop { background: rgba(5, 12, 11, .5); -webkit-backdrop-filte
     <button type="button" data-tab="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg>Início</button>
     <button type="button" data-tab="extrato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h14v16l-3-2-2 2-2-2-2 2-2-2-3 2zM9 9h6M9 13h6"/></svg>Extrato</button>
     <button class="fab" id="fab" type="button" aria-label="Novo lançamento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+    <button type="button" data-tab="dividas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h4"/></svg>Dívidas<span class="badge" id="badge-d" hidden></span></button>
     <button type="button" data-tab="lembretes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/></svg>Lembretes<span class="badge" id="badge" hidden></span></button>
-    <button type="button" data-tab="mais"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>Mais</button>
   </div>
 </nav>
 
@@ -723,7 +796,7 @@ const Core = (() => {
 </script>
 <script>
 "use strict";
-const APP_VERSION = "1.1.0";
+const APP_VERSION = "1.2.0";
 const KEY = "minhasContas.v1";
 const SNAP_PREFIX = "minhasContas.snap.";
 const { brl, ymd, fmtLocal, parseDate, parseLocal, addDays, nextOccurrence, RECURRENCES, fold, parseQuick, parseMoney, toICS } = Core;
@@ -739,14 +812,14 @@ const PAYS = ["pix", "crédito", "débito", "dinheiro", "boleto"];
 const DEFAULT_CATS = {
   despesa: [
     ["mercado", "🛒"], ["alimentação", "🍽️"], ["transporte", "🚗"], ["moradia", "🏠"], ["contas", "💡"], ["saúde", "💊"],
-    ["lazer", "🎉"], ["educação", "📚"], ["compras", "🛍️"], ["assinaturas", "📺"], ["pets", "🐾"], ["outros", "📦"],
+    ["lazer", "🎉"], ["educação", "📚"], ["compras", "🛍️"], ["assinaturas", "📺"], ["pets", "🐾"], ["dívidas", "💳"], ["outros", "📦"],
   ].map(([name, icon]) => ({ name, icon })),
   receita: [["salário", "💼"], ["freelance", "🧑‍💻"], ["vendas", "🏷️"], ["investimentos", "📈"], ["outros", "💰"]].map(([name, icon]) => ({ name, icon })),
 };
 
 // ================= dados (salvos no próprio aparelho) =================
 function emptyDb() {
-  return { version: 1, tx: [], rem: [], budgets: {}, cats: JSON.parse(JSON.stringify(DEFAULT_CATS)), learned: {}, meta: { created: Date.now() } };
+  return { version: 2, tx: [], rem: [], debts: [], budgets: {}, cats: JSON.parse(JSON.stringify(DEFAULT_CATS)), learned: {}, meta: { created: Date.now() } };
 }
 function migrate(d) {
   // Aqui entram as conversões quando o formato dos dados mudar em versões futuras.
@@ -754,6 +827,14 @@ function migrate(d) {
   d.tx ??= []; d.rem ??= []; d.budgets ??= {}; d.learned ??= {}; d.meta ??= {};
   d.cats ??= JSON.parse(JSON.stringify(DEFAULT_CATS));
   for (const k of ["despesa", "receita"]) if (!d.cats[k]?.length) d.cats[k] = JSON.parse(JSON.stringify(DEFAULT_CATS[k]));
+  // v2: controle de dívidas + categoria "dívidas"
+  d.debts ??= [];
+  for (const dv of d.debts) { dv.payments ??= []; dv.adjust ??= []; }
+  if (!d.cats.despesa.some((c) => c.name === "dívidas")) {
+    const i = d.cats.despesa.findIndex((c) => c.name === "outros");
+    d.cats.despesa.splice(i < 0 ? d.cats.despesa.length : i, 0, { name: "dívidas", icon: "💳" });
+  }
+  d.version = Math.max(d.version, 2);
   return d;
 }
 let storageError = false;
@@ -851,6 +932,11 @@ function saveTx(t, { silent } = {}) {
   const before = t.kind === "despesa" ? pctOf(t.category, t.date) : null;
   const i = db.tx.findIndex((x) => x.id === t.id);
   if (i >= 0) db.tx[i] = t; else db.tx.push({ ...t, id: t.id || uid(), created: Date.now() });
+  if (t.payId) {
+    // editou no extrato um pagamento de dívida: atualiza a dívida também
+    const pay = db.debts.find((d) => d.id === t.debtId)?.payments.find((x) => x.id === t.payId);
+    if (pay) { pay.cents = t.cents; pay.date = t.date; }
+  }
   if (t.desc) learn(t.desc, t.category);
   commit();
   if (silent) return;
@@ -870,8 +956,11 @@ function deleteTx(id) {
   const i = db.tx.findIndex((x) => x.id === id);
   if (i < 0) return;
   const [removed] = db.tx.splice(i, 1);
+  const dv = removed.payId ? db.debts.find((d) => d.id === removed.debtId) : null;
+  const pay = dv?.payments.find((x) => x.id === removed.payId);
+  if (pay) { dv.payments = dv.payments.filter((x) => x !== pay); syncDebtReminder(dv); }
   commit();
-  toast("Lançamento apagado.", { action: "Desfazer", onAction: () => { db.tx.push(removed); commit(); } });
+  toast(pay ? `Lançamento e pagamento de “${dv.name}” apagados.` : "Lançamento apagado.", { action: "Desfazer", onAction: () => { db.tx.push(removed); if (pay) { dv.payments.push(pay); syncDebtReminder(dv); } commit(); } });
 }
 
 function saveRem(r) {
@@ -895,7 +984,10 @@ function completeRem(id) {
   if (nxt) r.next = fmtLocal(nxt); else r.done = true;
   commit();
   const undo = () => { Object.assign(r, prev); commit(); };
-  if (r.cents) {
+  const dv = r.debtId ? db.debts.find((d) => d.id === r.debtId) : null;
+  if (dv && !debtCalc(dv).done) {
+    openDebtPaySheet(dv, { cents: r.cents });
+  } else if (r.cents) {
     openPaySheet(r, undo);
   } else {
     toast(nxt ? `✅ Feito. Próximo: ${fmtWhen(r.next)}` : "✅ Lembrete concluído.", { action: "Desfazer", onAction: undo });
@@ -942,7 +1034,7 @@ $$(".nav button[data-tab]").forEach((b) => b.addEventListener("click", () => {
   if (b.dataset.tab === "extrato") { ui.y = new Date().getFullYear(); ui.m = new Date().getMonth(); }
   go(b.dataset.tab);
 }));
-$("#fab").addEventListener("click", () => (ui.tab === "lembretes" ? openRemSheet() : openTxSheet()));
+$("#fab").addEventListener("click", () => (ui.tab === "lembretes" ? openRemSheet() : ui.tab === "dividas" ? openDebtSheet() : openTxSheet()));
 
 function render() {
   $$(".nav button[data-tab]").forEach((b) => b.dataset.tab === ui.tab ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
@@ -950,8 +1042,10 @@ function render() {
   const due = dueReminders().length;
   $("#badge").hidden = !due; $("#badge").textContent = due;
   try { if (due) navigator.setAppBadge?.(due)?.catch(() => {}); else navigator.clearAppBadge?.()?.catch(() => {}); } catch {}
-  $("#fab").setAttribute("aria-label", ui.tab === "lembretes" ? "Novo lembrete" : "Novo lançamento");
-  const views = { inicio: viewInicio, extrato: viewExtrato, lembretes: viewLembretes, mais: viewMais };
+  $("#fab").setAttribute("aria-label", ui.tab === "lembretes" ? "Novo lembrete" : ui.tab === "dividas" ? "Nova dívida" : "Novo lançamento");
+  const lateDebts = db.debts.filter((dv) => debtCalc(dv).late).length;
+  $("#badge-d").hidden = !lateDebts; $("#badge-d").textContent = lateDebts;
+  const views = { inicio: viewInicio, extrato: viewExtrato, lembretes: viewLembretes, mais: viewMais, dividas: viewDividas };
   const active = document.activeElement?.id;
   $("#view").innerHTML = (storageError ? `<div class="alert crit">⚠️ Os dados não estão sendo salvos neste navegador. Exporte um backup em Mais.</div>` : "") + views[ui.tab]();
   $("#view").classList.toggle("view-enter", ui.lastTab !== ui.tab);
@@ -985,7 +1079,10 @@ function viewInicio() {
   return `
   <header class="top">
     <div><p class="hello">${hello} 👋</p><h1>${MONTHS[m]}</h1></div>
-    <button class="icon-btn ghost" id="privacy" aria-pressed="${ui.private}" aria-label="${ui.private ? "Mostrar valores" : "Esconder valores"}">${ui.private ? ICON.eyeOff : ICON.eye}</button>
+    <div class="top-actions">
+      <button class="icon-btn ghost" id="privacy" aria-pressed="${ui.private}" aria-label="${ui.private ? "Mostrar valores" : "Esconder valores"}">${ui.private ? ICON.eyeOff : ICON.eye}</button>
+      <button class="icon-btn ghost" id="settings" aria-label="Configurações">${ICON.gear}</button>
+    </div>
   </header>
 
   <section class="hero">
@@ -1010,11 +1107,13 @@ function viewInicio() {
   </section>
 
   <section class="stats">
-    ${statTile(ICON.wallet, "Pode gastar por dia", st.perDay > 0 ? brl(st.perDay) : "—", st.perDay > 0 ? `por ${st.left} dia${st.left > 1 ? "s" : ""}, até ${st.dim}/${String(m + 1).padStart(2, "0")}` : s.inc ? "saldo do mês acabou" : "registre o que entrou")}
-    ${statTile(ICON.trend, "Previsão do mês", s.exp ? brl(st.forecast) : "—", "no ritmo atual")}
-    ${statTile(ICON.cal, "Média por dia", s.exp ? brl(st.avg) : "—", `em ${st.day} dia${st.day > 1 ? "s" : ""}`)}
-    ${statTile(ICON.flame, "Maior gasto", st.biggest ? brl(st.biggest.cents) : "—", st.biggest ? st.biggest.desc || st.biggest.category : "nenhum ainda")}
+    ${statTile("mint", ICON.wallet, "Pode gastar por dia", st.perDay > 0 ? brl(st.perDay) : "—", st.perDay > 0 ? `por ${st.left} dia${st.left > 1 ? "s" : ""}, até ${st.dim}/${String(m + 1).padStart(2, "0")}` : s.inc ? "saldo do mês acabou" : "registre o que entrou")}
+    ${statTile("sky", ICON.trend, "Previsão do mês", s.exp ? brl(st.forecast) : "—", "no ritmo atual")}
+    ${statTile("amber", ICON.cal, "Média por dia", s.exp ? brl(st.avg) : "—", `em ${st.day} dia${st.day > 1 ? "s" : ""}`)}
+    ${statTile("rose", ICON.flame, "Maior gasto", st.biggest ? brl(st.biggest.cents) : "—", st.biggest ? st.biggest.desc || st.biggest.category : "nenhum ainda")}
   </section>
+
+  ${debtHomeCard()}
 
   ${due.length || alerts.length ? `<section class="card"><div class="card-head"><h2>Agora</h2></div>
     ${due.length ? `<div class="list">${due.map(remRow).join("")}</div>` : ""}
@@ -1045,8 +1144,8 @@ function viewInicio() {
   ${backupOld ? `<div class="alert info">💾 <span>Faz tempo que você não salva um backup. <button class="link" data-go="mais">Fazer agora</button></span></div>` : ""}`;
 }
 
-function statTile(icon, label, value, hint) {
-  return `<div class="stat"><span class="ic" aria-hidden="true">${icon}</span><span class="label">${label}</span>
+function statTile(tone, icon, label, value, hint) {
+  return `<div class="stat"><span class="ic ${tone}" aria-hidden="true">${icon}</span><span class="label">${label}</span>
     <span class="value money">${value}</span><span class="hint">${esc(hint)}</span></div>`;
 }
 
@@ -1286,6 +1385,7 @@ let resizeTimer;
 addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawCharts, 150); });
 
 const ICON = {
+  gear: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`,
   eye: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>`,
   eyeOff: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 5.1A10.8 10.8 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6C3.8 8.4 2 12 2 12s3.5 7 10 7c1.8 0 3.4-.5 4.7-1.3M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>`,
   up: `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>`,
@@ -1374,7 +1474,8 @@ function viewLembretes() {
   const done = db.rem.filter((r) => r.done).sort((a, b) => (b.lastDone || "").localeCompare(a.lastDone || "")).slice(0, 10);
   const perm = "Notification" in window ? Notification.permission : "unsupported";
   return `
-  <div class="card-head"><h1>Lembretes</h1>${active.length ? `<button class="link" id="all-cal">📅 Todos na agenda</button>` : ""}</div>
+  <header class="top"><div><p class="hello">Avisos e contas</p><h1>Lembretes</h1></div>
+    <div class="top-actions">${active.length ? `<button class="icon-btn ghost" id="all-cal" aria-label="Pôr todos na agenda">📅</button>` : ""}<button class="icon-btn ghost" id="settings" aria-label="Configurações">${ICON.gear}</button></div></header>
   ${perm === "default" ? `<div class="alert info">🔔 <span>Quer que o app avise na hora? <button class="link" id="ask-notif">Ativar avisos</button></span></div>` : ""}
   <div class="alert info">📅 <span>Para o celular avisar <b>mesmo com o app fechado</b>, toque no lembrete e em “Pôr na agenda”. A agenda do celular avisa sem internet.</span></div>
   ${due.length ? `<section class="card"><h2 class="due">Agora (${due.length})</h2><div class="list">${due.map(remRow).join("")}</div></section>` : ""}
@@ -1394,7 +1495,7 @@ function viewMais() {
   const perm = "Notification" in window ? Notification.permission : "unsupported";
   const last = db.meta.lastBackup ? new Date(db.meta.lastBackup) : null;
   return `
-  <h1>Mais</h1>
+  <header class="top"><div><button class="link" data-go="inicio">‹ Início</button><h1>Configurações</h1></div></header>
   <section class="card"><h2>Backup</h2>
     <p class="small muted">Tudo fica salvo só neste celular. Salve um backup de vez em quando (no Drive, no e-mail ou no WhatsApp) para não perder nada se trocar de aparelho.
     ${last ? `Último backup: ${last.toLocaleDateString("pt-BR")}.` : "Você ainda não fez nenhum backup."}</p>
@@ -1433,9 +1534,12 @@ function viewMais() {
 function bindView() {
   const v = $("#view");
   v.onclick = (e) => {
-    const t = e.target.closest("button, [data-tx], [data-rem]");
+    const t = e.target.closest("button, [data-tx], [data-rem], [data-debt], [data-go]");
     if (!t) return;
     const d = t.dataset;
+    if (d.paydebt) return openDebtPaySheet(db.debts.find((x) => x.id === d.paydebt));
+    if (d.debt) return openDebtDetail(db.debts.find((x) => x.id === d.debt));
+    if (d.dsort) { ui.debtSort = d.dsort; return render(); }
     if (d.go) return go(d.go);
     if (d.cols) { ui.cols = d.cols; return render(); }
     if (d.done) return completeRem(d.done);
@@ -1449,6 +1553,8 @@ function bindView() {
     if (d.addcat) return openCategorySheet(d.addcat);
     if (d.snap) return restoreSnapshot(d.snap);
     switch (t.id) {
+      case "settings": return go("mais");
+      case "new-debt": return openDebtSheet();
       case "privacy":
         ui.private = !ui.private;
         try { localStorage.setItem(PRIV_KEY, ui.private ? "1" : "0"); } catch {}
@@ -1463,7 +1569,7 @@ function bindView() {
       case "wipe": return openWipeSheet();
     }
   };
-  v.onkeydown = (e) => { if (e.key === "Enter" && e.target.matches("[data-rem]")) e.target.click(); };
+  v.onkeydown = (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-rem], [data-debt], [data-go]:not(button)")) { e.preventDefault(); e.target.click(); } };
 
   const q = $("#q");
   if (q) {
@@ -1506,6 +1612,16 @@ function renderPreview() {
     $("#q-form").onclick = () => openTxSheet({ desc: text });
     return;
   }
+  const dq = quickDebt(p, text);
+  if (dq) {
+    const t = p.items[0], c = debtCalc(dq);
+    box.innerHTML = `<div class="preview-item"><span class="pill strong">💳 Pagamento: ${esc(dq.name)}</span><span class="pill">${brl(t.cents)}</span><span class="pill">${fmtDay(t.date)}</span>
+      <span class="pill">falta ${brl(Math.max(0, c.remaining - t.cents))} depois</span></div>
+      <div class="preview-actions"><button class="btn primary" id="q-save">Registrar pagamento</button><button class="btn" id="q-nodebt">Não é dívida</button></div>`;
+    $("#q-save").onclick = saveQuick;
+    $("#q-nodebt").onclick = () => { ui.quickNoDebt = text; renderPreview(); };
+    return;
+  }
   if (p.type === "tx") {
     box.innerHTML = p.items.map((t) => `<div class="preview-item">
       <span class="pill strong ${t.kind === "receita" ? "inc" : ""}">${t.kind === "receita" ? "Receita" : "Despesa"} ${brl(t.cents)}</span>
@@ -1525,10 +1641,20 @@ function renderPreview() {
     else openRemSheet({ text: p.text, start: p.when, rec: p.rec, cents: p.cents }, { fromQuick: true });
   };
 }
+function quickDebt(p, text) {
+  if (!p || p.type !== "tx" || p.items.length !== 1 || p.items[0].kind !== "despesa" || ui.quickNoDebt === text) return null;
+  return matchDebt(text);
+}
 function clearQuick() { ui.quick = ""; const q = $("#q"); if (q) { q.value = ""; renderPreview(); } }
 function saveQuick() {
   const p = currentParse();
   if (!p) { if (($("#q")?.value || "").trim()) openTxSheet({ desc: $("#q").value.trim() }); return; }
+  const dq = quickDebt(p, ($("#q")?.value || "").trim());
+  if (dq) {
+    payDebt(dq.id, p.items[0].cents, p.items[0].date, true);
+    clearQuick();
+    return;
+  }
   if (p.type === "tx") {
     for (const t of p.items) saveTx({ ...t }, { silent: p.items.length > 1 });
     clearQuick();
@@ -1565,6 +1691,368 @@ function setupMic() {
     recog.onend = () => { btn.classList.remove("listening"); recog = null; };
     recog.start();
   };
+}
+
+// ================= dívidas (controle separado, ligado ao extrato e aos lembretes) =================
+const DEBT_ICONS = ["💳", "🏦", "🚗", "🏠", "📱", "🎓", "🧾", "🤝", "🛒", "⚕️"];
+
+function debtCalc(dv) {
+  const paid = dv.payments.reduce((a, p) => a + p.cents, 0);
+  const adj = (dv.adjust || []).reduce((a, x) => a + x.cents, 0);
+  const total = Math.max(0, dv.total + adj);
+  const remaining = Math.max(0, total - paid);
+  const pct = total ? Math.min(100, Math.round((100 * paid) / total)) : 100;
+  const done = remaining === 0;
+  const inst = dv.installment || 0;
+  const instPaid = inst ? Math.min(dv.installments || Infinity, Math.floor((paid + inst * 0.05) / inst)) : null;
+  const t = now(), y = t.getFullYear(), m = t.getMonth();
+  const paidThisMonth = dv.payments.some((p) => p.date.startsWith(monthKey(y, m)) && !p.initial);
+  let nextDue = null, late = false;
+  if (dv.dueDay && !done) {
+    const dayThis = Math.min(dv.dueDay, Core.lastDayOfMonth(y, m));
+    if (paidThisMonth) nextDue = new Date(y, m + 1, Math.min(dv.dueDay, Core.lastDayOfMonth(y, m + 1)));
+    else {
+      nextDue = new Date(y, m, dayThis);
+      late = t.getDate() > dayThis;
+    }
+  }
+  const monthsLeft = inst && !done ? Math.ceil(remaining / inst) : null;
+  const payoff = monthsLeft ? new Date(y, m + monthsLeft - (paidThisMonth ? 0 : 1), 1) : null;
+  return { paid, adj, total, remaining, pct, done, instPaid, nextDue, late, monthsLeft, payoff, paidThisMonth };
+}
+const debtsActive = () => db.debts.filter((dv) => !debtCalc(dv).done);
+const debtsDone = () => db.debts.filter((dv) => debtCalc(dv).done);
+const monYY = (d) => `${MONTHS[d.getMonth()].slice(0, 3)}/${String(d.getFullYear()).slice(2)}`;
+const ddmm = (d) => `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`;
+
+function debtTotals() {
+  let remaining = 0, paid = 0, total = 0, late = 0;
+  for (const dv of db.debts) {
+    const c = debtCalc(dv);
+    if (c.done) continue;
+    remaining += c.remaining; paid += c.paid; total += c.total; if (c.late) late++;
+  }
+  return { remaining, paid, total, late, pct: total ? Math.round((100 * paid) / total) : 0 };
+}
+
+function syncDebtReminder(dv) {
+  const c = debtCalc(dv);
+  const r = db.rem.find((x) => x.debtId === dv.id);
+  if (!dv.remind || !dv.dueDay || c.done) {
+    if (r && !r.done) { r.done = true; r.next = null; }
+    return;
+  }
+  const due = c.nextDue;
+  const start = fmtLocal(new Date(due.getFullYear(), due.getMonth(), due.getDate(), 9, 0));
+  const data = { text: `Pagar ${dv.name}`, start, next: start, rec: "mensal", cents: dv.installment || null, debtId: dv.id, done: false, snooze: null, notifiedFor: null };
+  if (r) Object.assign(r, data); else db.rem.push({ id: uid(), created: Date.now(), ...data });
+}
+
+function saveDebt(dv) {
+  const i = db.debts.findIndex((x) => x.id === dv.id);
+  if (i >= 0) db.debts[i] = dv; else db.debts.push(dv);
+  syncDebtReminder(dv);
+  commit();
+}
+
+function payDebt(id, cents, date, asExpense, note = "") {
+  const dv = db.debts.find((x) => x.id === id);
+  if (!dv) return;
+  const wasDone = debtCalc(dv).done;
+  const pay = { id: uid(), date, cents, note };
+  if (asExpense) {
+    const tx = { id: uid(), created: Date.now(), kind: "despesa", cents, category: db.cats.despesa.some((c) => c.name === "dívidas") ? "dívidas" : "outros", desc: dv.name, date, pay: "", debtId: dv.id, payId: pay.id };
+    db.tx.push(tx);
+    pay.txId = tx.id;
+  }
+  dv.payments.push(pay);
+  syncDebtReminder(dv);
+  commit();
+  const c = debtCalc(dv);
+  const undo = () => deletePayment(dv.id, pay.id, { quiet: true });
+  if (c.done && !wasDone) toast(`🎉 ${dv.name} quitada! Parabéns!`, { action: "Desfazer", onAction: undo, ms: 7000 });
+  else toast(`✅ Pagamento de ${brl(cents)} registrado. Falta ${brl(c.remaining)}.`, { action: "Desfazer", onAction: undo, ms: 6000 });
+}
+
+function deletePayment(debtId, payId, { quiet } = {}) {
+  const dv = db.debts.find((x) => x.id === debtId);
+  if (!dv) return;
+  const p = dv.payments.find((x) => x.id === payId);
+  if (!p) return;
+  dv.payments = dv.payments.filter((x) => x.id !== payId);
+  const tx = p.txId ? db.tx.find((t) => t.id === p.txId) : null;
+  if (tx) db.tx = db.tx.filter((t) => t.id !== tx.id);
+  syncDebtReminder(dv);
+  commit();
+  if (!quiet) toast("Pagamento apagado.", { action: "Desfazer", onAction: () => { dv.payments.push(p); if (tx) db.tx.push(tx); syncDebtReminder(dv); commit(); } });
+}
+
+function deleteDebt(id) {
+  const i = db.debts.findIndex((x) => x.id === id);
+  if (i < 0) return;
+  const [removed] = db.debts.splice(i, 1);
+  const rems = db.rem.filter((r) => r.debtId === id);
+  db.rem = db.rem.filter((r) => r.debtId !== id);
+  commit();
+  toast(`Dívida “${removed.name}” apagada.`, { action: "Desfazer", onAction: () => { db.debts.splice(i, 0, removed); db.rem.push(...rems); commit(); } });
+}
+
+/** Acha uma dívida citada numa frase ("paguei 300 do empréstimo"). */
+function matchDebt(text) {
+  const f = fold(text);
+  for (const dv of debtsActive()) {
+    const words = fold(`${dv.name} ${dv.creditor || ""}`).split(/[^a-z0-9]+/).filter((w) => w.length >= 4);
+    if (words.some((w) => new RegExp("\\b" + w + "\\b").test(f))) return dv;
+  }
+  return null;
+}
+
+function debtCard(dv) {
+  const c = debtCalc(dv);
+  const subParts = [dv.creditor, dv.dueDay ? `vence dia ${dv.dueDay}` : ""].filter(Boolean);
+  const status = c.done ? `<span class="status good">quitada</span>`
+    : c.late ? `<span class="status crit">atrasada</span>`
+    : c.paidThisMonth && dv.dueDay ? `<span class="status good">paga este mês</span>` : "";
+  const foot = [
+    dv.installments ? `${c.instPaid} de ${dv.installments} parcelas` : dv.installment ? `parcela ${brl(dv.installment)}` : "",
+    c.payoff ? `quita em ${monYY(c.payoff)}` : "",
+  ].filter(Boolean).join(" · ");
+  return `<div class="debt ${c.done ? "is-done" : ""}" data-debt="${dv.id}" role="button" tabindex="0">
+    <div class="debt-top"><span class="ico" aria-hidden="true">${dv.icon || "💳"}</span>
+      <span class="main"><span class="title">${esc(dv.name)}</span><span class="sub">${esc(subParts.join(" · ") || "sem vencimento definido")}</span></span>${status}</div>
+    <div class="debt-mid">
+      <div><span class="k">${c.done ? "Pago" : "Falta pagar"}</span><span class="v money">${brl(c.done ? c.paid : c.remaining)}</span></div>
+      <div class="r"><span class="k">${c.pct}% pago</span><span class="v2 money">${brl(c.paid)} de ${brl(c.total)}</span></div>
+    </div>
+    <span class="track debt-track"><span class="fill debt-fill" style="width:${c.pct}%"></span></span>
+    ${!c.done ? `<div class="debt-foot"><span class="small muted">${esc(foot || "Toque para ver o histórico")}</span><button class="btn primary sm" data-paydebt="${dv.id}">Pagar</button></div>` : ""}
+  </div>`;
+}
+
+function viewDividas() {
+  const active = debtsActive();
+  const done = debtsDone();
+  const T = debtTotals();
+  const sorters = {
+    menor: (a, b) => debtCalc(a).remaining - debtCalc(b).remaining,
+    maior: (a, b) => debtCalc(b).remaining - debtCalc(a).remaining,
+    venc: (a, b) => (debtCalc(a).nextDue || 9e15) - (debtCalc(b).nextDue || 9e15),
+  };
+  const sorted = [...active].sort(sorters[ui.debtSort] || sorters.venc);
+  const nextOne = [...active].filter((dv) => debtCalc(dv).nextDue).sort(sorters.venc)[0];
+  const monthly = active.reduce((a, dv) => a + (dv.installment || 0), 0);
+  return `
+  <header class="top">
+    <div><p class="hello">Controle separado</p><h1>Dívidas</h1></div>
+    <button class="icon-btn ghost" id="settings" aria-label="Configurações">${ICON.gear}</button>
+  </header>
+
+  ${db.debts.length ? `
+  <section class="hero debt-hero">
+    <div class="hero-top"><span class="eyebrow">Falta pagar</span>${T.late ? `<span class="delta">⚠️ ${T.late} atrasada${T.late > 1 ? "s" : ""}</span>` : `<span class="delta">${active.length} ativa${active.length !== 1 ? "s" : ""}</span>`}</div>
+    <span class="big money">${brl(T.remaining)}</span>
+    <div class="hero-split">
+      <div><span class="k">Já pago</span><span class="v money">${brl(T.paid)}</span></div>
+      <div><span class="k">Parcelas por mês</span><span class="v money">${monthly ? brl(monthly) : "—"}</span></div>
+    </div>
+    <div class="hero-meter"><span>${T.total ? `Você já pagou ${T.pct}% das dívidas ativas` : "Todas as dívidas quitadas 🎉"}</span><span class="track"><span class="fill" style="width:${T.pct}%"></span></span></div>
+  </section>
+  ${nextOne ? `<div class="alert ${debtCalc(nextOne).late ? "crit" : "info"}">📅 <span>${debtCalc(nextOne).late ? "Atrasada" : "Próximo vencimento"}: <b>${esc(nextOne.name)}</b> em ${ddmm(debtCalc(nextOne).nextDue)}${nextOne.installment ? ` · <span class="money">${brl(nextOne.installment)}</span>` : ""}</span></div>` : ""}
+  ${active.length > 1 ? `<div class="chips" role="group" aria-label="Ordenar">
+    ${[["venc", "Vencimento"], ["menor", "Menor saldo"], ["maior", "Maior saldo"]].map(([k, l]) => `<button class="chip" data-dsort="${k}" aria-pressed="${(ui.debtSort || "venc") === k}">${l}</button>`).join("")}
+  </div>` : ""}
+  <div class="debts">${sorted.map(debtCard).join("")}</div>
+  ${done.length ? `<details class="card"><summary><h2 style="display:inline">Quitadas (${done.length}) 🎉</h2></summary><div class="debts" style="margin-top:12px">${done.map(debtCard).join("")}</div></details>` : ""}
+  <div class="alert info">💡 <span><b>Dica:</b> pagar primeiro a <b>menor</b> dívida dá motivação (bola de neve); pagar primeiro a de <b>maior juros</b> economiza mais dinheiro.</span></div>
+  ` : `
+  <section class="card empty-state">
+    <span class="big-ico" aria-hidden="true">💳</span>
+    <h2>Controle suas dívidas aqui</h2>
+    <p class="muted">Cadastre empréstimos, cartão, financiamentos ou dinheiro que você deve a alguém. A cada pagamento, o app atualiza quanto falta, mostra quando você quita e lança a despesa no extrato.</p>
+    <button class="btn primary" id="new-debt">Adicionar minha primeira dívida</button>
+  </section>`}`;
+}
+
+function openDebtSheet(dv = null) {
+  const editing = !!dv;
+  const d = dv || { icon: "💳", remind: true };
+  let icon = d.icon || "💳";
+  openSheet(`
+    <div class="sheet-head"><h2>${editing ? "Editar dívida" : "Nova dívida"}</h2>${closeBtn}</div>
+    <form id="debtf" style="display:grid;gap:14px">
+      <div class="cat-grid" id="d-icons" role="group" aria-label="Ícone"></div>
+      <label class="field"><span>Nome</span><input id="d-name" required placeholder="ex.: Empréstimo, Cartão Nubank, Carro" value="${esc(d.name || "")}"></label>
+      <label class="field"><span>Com quem (opcional)</span><input id="d-cred" placeholder="ex.: Banco do Brasil, minha irmã" value="${esc(d.creditor || "")}"></label>
+      <label class="field"><span>Valor total da dívida (R$)</span><input id="d-total" class="big" inputmode="decimal" placeholder="0,00" value="${d.total ? (d.total / 100).toFixed(2).replace(".", ",") : ""}"></label>
+      <div class="two">
+        <label class="field"><span>Nº de parcelas</span><input id="d-n" inputmode="numeric" placeholder="ex.: 12" value="${d.installments || ""}"></label>
+        <label class="field"><span>Valor da parcela</span><input id="d-inst" inputmode="decimal" placeholder="ex.: 350,00" value="${d.installment ? (d.installment / 100).toFixed(2).replace(".", ",") : ""}"></label>
+      </div>
+      <div class="two">
+        <label class="field"><span>Dia do vencimento</span><input id="d-day" inputmode="numeric" placeholder="1 a 31" value="${d.dueDay || ""}"></label>
+        ${editing ? "<span></span>" : `<label class="field"><span>Já paguei (opcional)</span><input id="d-paid" inputmode="decimal" placeholder="0,00"></label>`}
+      </div>
+      <label class="check"><input type="checkbox" id="d-rem" ${d.remind !== false ? "checked" : ""}> <span>Lembrar todo mês no dia do vencimento</span></label>
+      <label class="field"><span>Observação (juros, combinado…)</span><input id="d-note" value="${esc(d.note || "")}"></label>
+      <p class="small muted" id="d-help">Dica: se souber só as parcelas, preencha nº e valor da parcela que o total é calculado.</p>
+      <div class="actions"><button class="btn primary">${editing ? "Salvar" : "Adicionar dívida"}</button></div>
+    </form>`, (root) => {
+    const drawIcons = () => {
+      root.querySelector("#d-icons").innerHTML = DEBT_ICONS.map((i) => `<button type="button" class="chip ${i === icon ? "on" : ""}" data-i="${i}" aria-label="Ícone ${i}">${i}</button>`).join("");
+    };
+    drawIcons();
+    root.querySelector("#d-icons").onclick = (e) => { const b = e.target.closest("button"); if (b) { icon = b.dataset.i; drawIcons(); } };
+    if (!editing) setTimeout(() => root.querySelector("#d-name").focus(), 50);
+    root.querySelector("#debtf").onsubmit = (e) => {
+      e.preventDefault();
+      const val = (id) => root.querySelector(id)?.value.trim() || "";
+      const n = parseInt(val("#d-n"), 10) || null;
+      const inst = val("#d-inst") ? parseMoney(val("#d-inst")) : null;
+      let total = val("#d-total") ? parseMoney(val("#d-total")) : null;
+      if (val("#d-inst") && !inst) return toast("Valor da parcela inválido. Ex.: 350,00");
+      if (val("#d-total") && !total) return toast("Valor total inválido. Ex.: 4.000,00");
+      if (!total && n && inst) total = n * inst;
+      if (!total) return toast("Informe o valor total ou as parcelas (nº e valor).");
+      const day = parseInt(val("#d-day"), 10) || null;
+      if (day && (day < 1 || day > 31)) return toast("O dia do vencimento vai de 1 a 31.");
+      const paidBefore = val("#d-paid") ? parseMoney(val("#d-paid")) : null;
+      if (val("#d-paid") && !paidBefore) return toast("Valor já pago inválido.");
+      const out = {
+        ...(dv || { id: uid(), created: Date.now(), payments: [], adjust: [] }),
+        name: val("#d-name"), creditor: val("#d-cred"), icon, total, installments: n, installment: inst,
+        dueDay: day, remind: root.querySelector("#d-rem").checked, note: val("#d-note"),
+      };
+      if (paidBefore) out.payments.push({ id: uid(), date: ymd(now()), cents: Math.min(paidBefore, total), note: "pago antes de usar o app", initial: true });
+      sheet.close();
+      saveDebt(out);
+      if (ui.tab !== "dividas") go("dividas");
+      toast(editing ? "Dívida atualizada." : `💳 ${out.name} adicionada. Falta ${brl(debtCalc(out).remaining)}.`);
+    };
+  });
+}
+
+function openDebtPaySheet(dv, { cents, onDone } = {}) {
+  const c = debtCalc(dv);
+  const suggested = Math.min(cents || dv.installment || c.remaining, c.remaining);
+  openSheet(`
+    <div class="sheet-head"><h2>Pagar ${esc(dv.name)}</h2>${closeBtn}</div>
+    <p class="muted small">Falta <b class="money">${brl(c.remaining)}</b> de ${brl(c.total)}.</p>
+    <form id="payf" style="display:grid;gap:14px">
+      <label class="field"><span>Valor pago (R$)</span><input id="p-val" class="big" inputmode="decimal" required value="${(suggested / 100).toFixed(2).replace(".", ",")}"></label>
+      <div class="chips">
+        ${dv.installment && dv.installment < c.remaining ? `<button type="button" class="chip" data-v="${dv.installment}">Parcela ${brl(dv.installment)}</button>` : ""}
+        <button type="button" class="chip" data-v="${c.remaining}">Quitar tudo ${brl(c.remaining)}</button>
+      </div>
+      <label class="field"><span>Data</span><input id="p-date" type="date" value="${ymd(now())}"></label>
+      <label class="check"><input type="checkbox" id="p-exp" checked> <span>Lançar também como despesa no extrato</span></label>
+      <label class="field"><span>Observação (opcional)</span><input id="p-note" placeholder="ex.: parcela 4, pago no pix"></label>
+      <button class="btn primary">Registrar pagamento</button>
+    </form>`, (root) => {
+    root.querySelector(".chips").onclick = (e) => {
+      const b = e.target.closest("[data-v]");
+      if (b) root.querySelector("#p-val").value = (Number(b.dataset.v) / 100).toFixed(2).replace(".", ",");
+    };
+    root.querySelector("#payf").onsubmit = (e) => {
+      e.preventDefault();
+      const v = parseMoney(root.querySelector("#p-val").value);
+      if (!v) return toast("Digite o valor pago. Ex.: 350,00");
+      sheet.close();
+      payDebt(dv.id, v, root.querySelector("#p-date").value || ymd(now()), root.querySelector("#p-exp").checked, root.querySelector("#p-note").value.trim());
+      onDone?.();
+    };
+  });
+}
+
+function openAdjustSheet(dv) {
+  let sign = 1;
+  openSheet(`
+    <div class="sheet-head"><h2>Ajustar saldo</h2>${closeBtn}</div>
+    <p class="muted small">Use quando a dívida aumentar (juros, multa) ou diminuir (desconto, negociação).</p>
+    <form id="adjf" style="display:grid;gap:14px">
+      <div class="seg" role="group"><button type="button" data-s="1" aria-pressed="true">Juros / multa (+)</button><button type="button" data-s="-1" aria-pressed="false">Desconto (−)</button></div>
+      <label class="field"><span>Valor (R$)</span><input id="a-val" class="big" inputmode="decimal" required placeholder="0,00"></label>
+      <label class="field"><span>Motivo (opcional)</span><input id="a-note" placeholder="ex.: juros do atraso, renegociação"></label>
+      <button class="btn primary">Salvar ajuste</button>
+    </form>`, (root) => {
+    const seg = root.querySelector(".seg");
+    seg.onclick = (e) => { const b = e.target.closest("button"); if (!b) return; sign = Number(b.dataset.s); $$("button", seg).forEach((x) => x.setAttribute("aria-pressed", x === b)); };
+    setTimeout(() => root.querySelector("#a-val").focus(), 50);
+    root.querySelector("#adjf").onsubmit = (e) => {
+      e.preventDefault();
+      const v = parseMoney(root.querySelector("#a-val").value);
+      if (!v) return toast("Digite o valor. Ex.: 45,00");
+      (dv.adjust ||= []).push({ id: uid(), date: ymd(now()), cents: sign * v, note: root.querySelector("#a-note").value.trim() });
+      sheet.close();
+      saveDebt(dv);
+      toast(`Saldo ajustado. Falta ${brl(debtCalc(dv).remaining)}.`);
+    };
+  });
+}
+
+function openDebtDetail(dv) {
+  const c = debtCalc(dv);
+  const hist = [
+    ...dv.payments.map((p) => ({ ...p, type: "pay" })),
+    ...(dv.adjust || []).map((a) => ({ ...a, type: "adj" })),
+  ].sort((a, b) => b.date.localeCompare(a.date));
+  const facts = [
+    ["Total", brl(c.total) + (c.adj ? ` (${c.adj > 0 ? "+" : "−"}${brl(Math.abs(c.adj))} ajustes)` : "")],
+    ["Já pago", brl(c.paid)],
+    dv.installments ? ["Parcelas", `${c.instPaid} de ${dv.installments}`] : dv.installment ? ["Parcela", brl(dv.installment)] : null,
+    c.nextDue ? ["Próximo vencimento", ddmm(c.nextDue) + (c.late ? " (atrasada)" : "")] : null,
+    c.payoff ? ["Quitação prevista", MONTHS[c.payoff.getMonth()] + " de " + c.payoff.getFullYear()] : null,
+    dv.creditor ? ["Com quem", dv.creditor] : null,
+  ].filter(Boolean);
+  openSheet(`
+    <div class="sheet-head"><h2>${dv.icon || "💳"} ${esc(dv.name)}</h2>${closeBtn}</div>
+    <div class="debt-sum">
+      <span class="k">${c.done ? "Quitada 🎉" : "Falta pagar"}</span>
+      <span class="v money">${brl(c.remaining)}</span>
+      <span class="track debt-track"><span class="fill debt-fill" style="width:${c.pct}%"></span></span>
+      <span class="small muted">${c.pct}% pago</span>
+    </div>
+    <div class="facts">${facts.map(([k, v]) => `<div><span class="k">${k}</span><span class="v money">${esc(v)}</span></div>`).join("")}</div>
+    ${dv.note ? `<p class="small muted">📝 ${esc(dv.note)}</p>` : ""}
+    <div class="actions">
+      ${!c.done ? `<button class="btn primary" id="dd-pay">Pagar</button>` : ""}
+      <button class="btn" id="dd-edit">Editar</button><button class="btn" id="dd-adj">Ajustar saldo</button>
+    </div>
+    <h3 style="font-size:15px">Histórico</h3>
+    ${hist.length ? `<div class="list">${hist.map((h) => `<div class="row" style="cursor:default">
+        <span class="ico" aria-hidden="true">${h.type === "pay" ? "✅" : h.cents > 0 ? "📈" : "🏷️"}</span>
+        <span class="main"><span class="title">${h.type === "pay" ? "Pagamento" : h.cents > 0 ? "Juros / multa" : "Desconto"}</span>
+          <span class="sub">${fmtDay(h.date)}${h.note ? " · " + esc(h.note) : ""}${h.txId ? " · no extrato" : ""}</span></span>
+        <span class="amt money ${h.type === "pay" ? "inc" : ""}">${h.type === "pay" ? "−" : h.cents > 0 ? "+" : "−"} ${brl(Math.abs(h.cents))}</span>
+        <button class="icon-btn" style="width:36px;height:36px" data-del-h="${h.type}|${h.id}" aria-label="Apagar">×</button>
+      </div>`).join("")}</div>` : `<p class="empty">Nenhum pagamento ainda.</p>`}
+    <button class="btn danger" id="dd-del">Apagar dívida</button>`, (root) => {
+    root.querySelector("#dd-pay")?.addEventListener("click", () => openDebtPaySheet(dv));
+    root.querySelector("#dd-edit").onclick = () => openDebtSheet(dv);
+    root.querySelector("#dd-adj").onclick = () => openAdjustSheet(dv);
+    root.querySelector("#dd-del").onclick = () => { sheet.close(); deleteDebt(dv.id); };
+    root.onclick = (e) => {
+      const b = e.target.closest("[data-del-h]");
+      if (!b) return;
+      const [type, id] = b.dataset.delH.split("|");
+      if (type === "pay") deletePayment(dv.id, id);
+      else { dv.adjust = dv.adjust.filter((a) => a.id !== id); saveDebt(dv); toast("Ajuste apagado."); }
+      openDebtDetail(db.debts.find((x) => x.id === dv.id));
+    };
+  });
+}
+
+function debtHomeCard() {
+  const active = debtsActive();
+  if (!active.length) return "";
+  const T = debtTotals();
+  const nextOne = [...active].filter((dv) => debtCalc(dv).nextDue).sort((a, b) => debtCalc(a).nextDue - debtCalc(b).nextDue)[0];
+  return `<section class="card debt-mini" data-go="dividas" role="button" tabindex="0">
+    <div class="card-head"><h2>Dívidas</h2><span class="link">Abrir</span></div>
+    <div class="debt-mid"><div><span class="k">Falta pagar</span><span class="v money">${brl(T.remaining)}</span></div>
+      <div class="r"><span class="k">${T.pct}% pago</span><span class="v2">${active.length} ativa${active.length > 1 ? "s" : ""}${T.late ? ` · <b class="due">${T.late} atrasada${T.late > 1 ? "s" : ""}</b>` : ""}</span></div></div>
+    <span class="track debt-track"><span class="fill debt-fill" style="width:${T.pct}%"></span></span>
+    ${nextOne ? `<span class="small muted">Próximo: ${esc(nextOne.name)} em ${ddmm(debtCalc(nextOne).nextDue)}</span>` : ""}
+  </section>`;
 }
 
 // ================= formulários =================
